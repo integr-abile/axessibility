@@ -1,0 +1,33 @@
+\documentclass[11pt,reqno]{amsart}
+\providecommand{\opt}[1]{\framebox[3ex][c]{#1}} %casella per risposte multiple
+\DeclareMathOperator{\dom}{dom}  %% dominio di una funzione
+\DeclareMathOperator{\re}{Re}  %% parte reale
+\DeclareMathOperator{\im}{Im}  %% parte immaginaria
+\newcommand{\erre}{\mathbb{R}} %insieme dei numeri reali
+\newcommand{\ci}{\mathbb{C}} % insieme dei numeri complessi
+\DeclareMathOperator{\sign}{sign}  %% segno
+\DeclareMathOperator{\de}{d\!} % d dritto
+\DeclareMathOperator{\res}{Res} % residuo
+\newcommand{\F}{\mathcal{F}} % trasformata di Fourier
+\renewcommand{\L}{\mathcal{L}} % trasformata di Laplace
+\newcommand{\LL}{\L^2} % trasformata di Laplace
+\newcommand{\LLL}{(\L^2+(\LL)^3} % trasformata di Laplace
+\newcommand{\weird}[3]{\sum_{n = #1}^{#2} \F(#3) - 7 +\frac{#1}{#2}}
+\def\indicator{\mathbf{1}}
+
+
+\begin{document}
+\noindent
+Student's surname and name \underline{\hspace{68.5ex}}
+
+\vspace{1.5ex}
+
+\noindent
+Student's number \underline{\hspace{80ex}}
+
+%%%%%%%%%% DOMANDE A RISPOSTA MULTIPLA
+
+\vspace{8ex}
+$$\L(3) + \F(4) + \LL(6) + (\LLL)^7 \indicator_{5}$$
+\noindent
+\end{document}

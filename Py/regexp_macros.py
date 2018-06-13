@@ -1,8 +1,11 @@
 import re
+import sys
 
 import ply.lex
 import ply.lex
 
+# Input file, from terminal
+input_file = sys.argv[1]
 
 # Usage
 # python stripcomments.py input.tex > output.tex
@@ -21,6 +24,7 @@ import ply.lex
 #    while preserve the "\n" at the end of the line. 
 #    That is because remove the % some time will result in
 #    compilation failure.
+
 
 def strip_comments(source):
     tokens = (
@@ -169,29 +173,29 @@ START_PATTERN = 'egin{document}'
 END_PATTERN = 'nd{document}'
 
 
-def removeMacro(string):
+def remove_macro(strz):
     """
         This method searches for defs, newcommands, edef, gdef,xdef, DeclareMathOperators and renewcommand 
         and gets the macro structure out of it. Number 
     """
 
-    str_no_comments = strip_comments(string)
+    str_no_comments = strip_comments(strz)
     subs_regexp = []
     list_regexp = []
     # You can manually specify the number of replacements by changing the 4th argument
-    shouldParse = True
+    should_parse = True
     final_doc = []
     for line in str_no_comments.split('\n'):
-        if shouldParse:
+        if should_parse:
             if re.search(START_PATTERN, line):
-                shouldParse = False
+                should_parse = False
                 for reg in list_regexp:
                     expanded_regexp = build_subs_regexp(reg)
                     if expanded_regexp:
                         subs_regexp.append(expanded_regexp)
 
             else:
-                result = parseMacroStructure(line)
+                result = parse_macro_structure(line)
                 if result:
                     list_regexp.append(result)
         else:
@@ -199,19 +203,19 @@ def removeMacro(string):
                 final_doc.append(line)
                 break
             else:
-                ### Perform substitutions  
-                line = recursiveExpansion(line, subs_regexp)
+                # Perform substitutions
+                line = recursive_expansion(line, subs_regexp)
         final_doc.append(line)
 
     # print(subs_regexp)
     print('\n'.join(final_doc))
 
 
-def parseMacroStructure(line):
+def parse_macro_structure(line):
     regexp = r"\\(.*command|DeclareMathOperator|def|edef|xdef|gdef)({|)(\\[a-zA-Z]+)(}|)(\[([0-9])\]|){(.*(?=\}))\}.*$"
     result = re.search(regexp, line)
     if result:
-        macroStructure = {
+        macro_structure = {
             'command_type': result.group(1),
             'macro_name': result.group(3),
             'separator_open': result.group(2),
@@ -219,7 +223,7 @@ def parseMacroStructure(line):
             'number_of_inputs': result.group(6),
             'raw_replacement': result.group(7),
         }
-        return macroStructure
+        return macro_structure
     else:
         return None
 
@@ -244,7 +248,7 @@ def build_subs_regexp(reg):
             print()
 
 
-def recursiveExpansion(line, available_regexp):
+def recursive_expansion(line, available_regexp):
     for subs in available_regexp:
         if not (re.search(subs["reg"], line)):
             # print(line,'does not match',subs["reg"])
@@ -255,45 +259,12 @@ def recursiveExpansion(line, available_regexp):
         # print('after: '+line)
     for subs in available_regexp:
         if not (not (re.search(subs["reg"], line))):
-            return recursiveExpansion(line, available_regexp)
+            return recursive_expansion(line, available_regexp)
         else:
             continue
     return line
 
 
-string = r"""
-\documentclass[11pt,reqno]{amsart}
-\providecommand{\opt}[1]{\framebox[3ex][c]{#1}} %casella per risposte multiple
-\DeclareMathOperator{\dom}{dom}  %% dominio di una funzione
-\DeclareMathOperator{\re}{Re}  %% parte reale
-\DeclareMathOperator{\im}{Im}  %% parte immaginaria
-\newcommand{\erre}{\mathbb{R}} %insieme dei numeri reali
-\newcommand{\ci}{\mathbb{C}} % insieme dei numeri complessi
-\DeclareMathOperator{\sign}{sign}  %% segno
-\DeclareMathOperator{\de}{d\!} % d dritto
-\DeclareMathOperator{\res}{Res} % residuo
-\newcommand{\F}{\mathcal{F}} % trasformata di Fourier
-\renewcommand{\L}{\mathcal{L}} % trasformata di Laplace
-\newcommand{\LL}{\L^2} % trasformata di Laplace
-\newcommand{\LLL}{(\L^2+(\LL)^3} % trasformata di Laplace
-\newcommand{\weird}[3]{\sum_{n = #1}^{#2} \F(#3) - 7 +\frac{#1}{#2}}
-\def\indicator{\mathbf{1}}
-
-
-\begin{document}
-\noindent
-Student's surname and name \underline{\hspace{68.5ex}}
-
-\vspace{1.5ex}
-
-\noindent
-Student's number \underline{\hspace{80ex}}
-
-%%%%%%%%%% DOMANDE A RISPOSTA MULTIPLA
-
-\vspace{8ex}
-$$\L(3) + \F(4) + \LL(6) + (\LLL)^7 \indicator_{5}  \weird ab\res{c}$$
-\noindent
-\end{document}
-"""
-removeMacro(string)
+with open(input_file, 'r') as i:
+    line = i.read()
+    remove_macro(line)
