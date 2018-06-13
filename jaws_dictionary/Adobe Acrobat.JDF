@@ -1,0 +1,780 @@
+. _ {.in basso aperta parentesi graffa.*.*.*.0.0.
+.$. .*.*.*.0.0.
+.$%. .*.*.*.0.0.
+.&.separatore.*.*.*.0.0.
+.(.aperta parentesi tonda.*.*.*.0.0.
+.).chiusa parentesi tonda.*.*.*.0.0.
+.*.asterisco.*.*.*.0.0.
+.*[.per aperta parentesi quadra.*.*.*.0.0.
+.+.più.*.*.*.0.0.
+.+[.più aperta parentesi quadra.*.*.*.0.0.
+.-.meno.*.*.*.0.0.
+./.diviso.*.*.*.0.0.
+./[.diviso aperta parentesi quadra.*.*.*.0.0.
+.0^+.zero più.*.*.*.0.0.
+.0^-.zero meno.*.*.*.0.0.
+.0^{+}.zero più.*.*.*.0.0.
+.0^{-}.zero meno.*.*.*.0.0.
+.<.minore.*.*.*.0.0.
+.=.uguale.*.*.*.0.0.
+.>.maggiore.*.*.*.0.0.
+.[.aperta parentesi quadra.*.*.*.0.0.
+.\%.per cento.*.*.*.0.0.
+.\\.nuova linea.*.*.*.0.0.
+.\`{a}.à.*.*.*.0.0.
+.\`{e}.è.*.*.*.0.0.
+.\`{i}.ì.*.*.*.0.0.
+.\`{o}.ò.*.*.*.0.0.
+.\`{u}.ù.*.*.*.0.0.
+.\aleph.alef.*.*.*.0.0.
+.\alpha.alfa.*.*.*.0.0.
+.\angle. angolo.*.*.*.0.0.
+.\approx.circa uguale.*.*.*.0.0.
+.\arccos.arco coseno.*.*.*.0.0.
+.\arccos ^2.arco coseno al quadrato di.*.*.*.0.0.
+.\arccos ^3.arco coseno al cubo di.*.*.*.0.0.
+.\arccos ^{2}.arco coseno al quadrato di.*.*.*.0.0.
+.\arccos ^{3}.arco coseno al cubo di.*.*.*.0.0.
+.\arccot.arco cotangente.*.*.*.0.0.
+.\arccsc.arco cosecante.*.*.*.0.0.
+.\arcsec.arco secante.*.*.*.0.0.
+.\arcsin.arco seno.*.*.*.0.0.
+.\arcsin ^2.arco seno al quadrato di.*.*.*.0.0.
+.\arcsin ^3.arco seno al cubo di.*.*.*.0.0.
+.\arcsin ^{2}.arco seno al quadrato di.*.*.*.0.0.
+.\arcsin ^{3}.arco seno al cubo di.*.*.*.0.0.
+.\arctan.arco tangente.*.*.*.0.0.
+.\arctan ^2.arco tangente al quadrato di.*.*.*.0.0.
+.\arctan ^3.arco tangente al cubo di.*.*.*.0.0.
+.\arctan ^{2}.arco tangente al quadrato di.*.*.*.0.0.
+.\arctan ^{3}.arco tangente al cubo di .*.*.*.0.0.
+.\arctanh.arcotangente iperbolica.*.*.*.0.0.
+.\arg.argomento.*.*.*.0.0.
+.\ast.per.*.*.*.0.0.
+.\asymp.ha stesso ordine di grandezza di.*.*.*.0.0.
+.\backslash.controbarra.*.*.*.0.0.
+.\begin {array}.inizio tabella col seguente numero di colonne.*.*.*.0.0.
+.\begin {bmatrix}.inizio matrice aperta parentesi quadra.*.*.*.0.0.
+.\begin {cases}.inizio sistema.*.*.*.0.0.
+.\begin {matrix}.inizio matrice.*.*.*.0.0.
+.\begin {pmatrix}.inizio matrice aperta parentesi tonda.*.*.*.0.0.
+.\begin {smallmatrix}.inizio matrice.*.*.*.0.0.
+.\begin {vmatrix}.inizio determinante della matrice.*.*.*.0.0.
+.\begin{document}.Inizio documento Latex.*.*.*.0.0.
+.\beta.beta.*.*.*.0.0.
+.\bigcap.intersezione.*.*.*.0.0.
+.\bigcirc.cerchio.*.*.*.0.0.
+.\bigcup.unione.*.*.*.0.0.
+.\bigl (.aperta parentesi tonda.*.*.*.0.0.
+.\bigodot.punto prodotto col cerchio.*.*.*.0.0.
+.\bigoplus.più col cerchio.*.*.*.0.0.
+.\bigotimes.x col cerchio.*.*.*.0.0.
+.\bigr ).chiusa parentesi tonda.*.*.*.0.0.
+.\bigskip. vuoto latex.*.*.*.0.0.
+.\bigskip . vuoto latex.*.*.*.0.0.
+.\bigsqcup.unione disgiunta.*.*.*.0.0.
+.\bigtriangledown.nabla.*.*.*.0.0.
+.\bigtriangleup.delta.*.*.*.0.0.
+.\biguplus.unione con + dentro.*.*.*.0.0.
+.\bigvee.esiste.*.*.*.0.0.
+.\bigwedge.per ogni.*.*.*.0.0.
+.\bot.è perpendicolare a.*.*.*.0.0.
+.\bowtie.join naturale.*.*.*.0.0.
+.\bullet.punto pieno.*.*.*.0.0.
+.\cap.intersezione.*.*.*.0.0.
+.\cdot.punto prodotto.*.*.*.0.0.
+.\chi.chi.*.*.*.0.0.
+.\circ.composto.*.*.*.0.0.
+.\clubsuit.fiori.*.*.*.0.0.
+.\cong.è congruente a.*.*.*.0.0.
+.\coprod.coproduttoria.*.*.*.0.0.
+.\coprod \limits.coproduttoria di.*.*.*.0.0.
+.\coprod \limits \sb {i=1} ^ N.coproduttoria per i che va da 1 a N.*.*.*.0.0.
+.\coprod \limits \sb {i=1} ^ {N}.coproduttoria per i che va da 1 a N.*.*.*.0.0.
+.\coprod \limits \sb {i=1} ^N.coproduttoria per i che va da 1 a N.*.*.*.0.0.
+.\coprod \limits \sb {i=1}^ N.coproduttoria per i che va da 1 a N.*.*.*.0.0.
+.\coprod \limits \sb {i=1}^N.coproduttoria per i che va da 1 a N.*.*.*.0.0.
+.\coprod \limits \sb {i=1}^{N}.coproduttoria per i che va da 1 a N.*.*.*.0.0.
+.\cos.coseno.*.*.*.0.0.
+.\cos ^2.coseno al quadrato di.*.*.*.0.0.
+.\cos ^3.coseno al cubo di .*.*.*.0.0.
+.\cos ^{2}.coseno al quadrato di.*.*.*.0.0.
+.\cos ^{3}.coseno al cubo di .*.*.*.0.0.
+.\cosh.coseno iperbolico.*.*.*.0.0.
+.\cot.cotangente.*.*.*.0.0.
+.\cot ^2.cotangente al quadrato di.*.*.*.0.0.
+.\cot ^3.cotangente al cubo di.*.*.*.0.0.
+.\cot ^{2}.cotangente al quadrato di.*.*.*.0.0.
+.\cot ^{3}.cotangente al cubo di.*.*.*.0.0.
+.\coth.cotangente iperbolica.*.*.*.0.0.
+.\csc.cosecante.*.*.*.0.0.
+.\csc ^2.cosecante al quadrato di.*.*.*.0.0.
+.\csc ^3.cosecante al cubo di.*.*.*.0.0.
+.\csc ^{2}.cosecante al quadrato di.*.*.*.0.0.
+.\csc ^{3}.cosecante al cubo di.*.*.*.0.0.
+.\cup.unione.*.*.*.0.0.
+.\dagger.trasposta coniugata.*.*.*.0.0.
+.\ddots.puntini.*.*.*.0.0.
+.\deg.gradi.*.*.*.0.0.
+.\delimiter "026A30C .sbarra.*.*.*.0.0.
+.\delimiter "026B30D .doppia sbarra.*.*.*.0.0.
+.\delimiter 69640972 .inizio valore assoluto.*.*.*.0.0.
+.\delimiter 69645069 .inizio norma.*.*.*.0.0.
+.\delta.delta.*.*.*.0.0.
+.\Delta.Delta maiuscolo.*.*.*.1.0.
+.\det.determinante.*.*.*.0.0.
+.\dfrac.frazione.*.*.*.0.0.
+.\dfrac {.inizio frazione di numeratore.*.*.*.0.0.
+.\dfrac{d}{dx}.derivata rispetto ad ics di.*.*.*.0.0.
+.\diamond.diamante.*.*.*.0.0.
+.\diamondsuit.quadri.*.*.*.0.0.
+.\dim.dimensione.*.*.*.0.0.
+.\dint.integrale definito.*.*.*.0.0.
+.\div.diviso.*.*.*.0.0.
+.\documentclass{article}.articolo latex.*.*.*.0.0.
+.\doteq.è congruente a.*.*.*.0.0.
+.\dots.puntini.*.*.*.0.0.
+.\DOTSI  \intop  \ilimits@  .integrale sbagliato.*.*.*.0.0.
+.\dotsi \intop \ilimits@.integrale di.*.*.*.0.0.
+.\dotsi \intop \ilimits@ \sb .integrale definito di pedice.*.*.*.0.0.
+.\dotsi \intop \ilimits@ \sb 0 ^ 1 .integrale definito tra 0 e 1 di.*.*.*.0.0.
+.\dotsi \intop \ilimits@ \sb 0 ^1 .integrale definito tra 0 e 1 di .*.*.*.0.0.
+.\dotsi \intop \ilimits@ \sb 0^ 1 .integrale definito tra 0 e 1 di .*.*.*.0.0.
+.\dotsi \intop \ilimits@ \sb 0^1 .integrale definito tra 0 e 1 di.*.*.*.0.0.
+.\dotsi \intop \ilimits@ \sb {0} ^ {1} .integrale definito tra 0 e 1 di .*.*.*.0.0.
+.\dotsi \intop \ilimits@ \sb {0}^{1} .integrale definito tra zero e uno di.*.*.*.0.0.
+.\ell.elle.*.*.*.0.0.
+.\emptyset.insieme vuoto.*.*.*.0.0.
+.\end {array}.fine tabella.*.*.*.0.0.
+.\end {bmatrix}.chiusa parentesi quadra fine matrice.*.*.*.0.0.
+.\end {cases}.fine sistema.*.*.*.0.0.
+.\end {matrix}.fine matrice.*.*.*.0.0.
+.\end {pmatrix}.chiusa parentesi tonda fine matrice .*.*.*.0.0.
+.\end {smallmatrix}.fine matrice.*.*.*.0.0.
+.\end {vmatrix}.fine determinante.*.*.*.0.0.
+.\end{document}.fine documento latex.*.*.*.0.0.
+.\epsilon.epsilon.*.*.*.0.0.
+.\equiv.è equivalente a.*.*.*.0.0.
+.\eta.eta.*.*.*.0.0.
+.\exists.esiste.*.*.*.0.0.
+.\exists !.esiste ed è unico.*.*.*.0.0.
+.\exp.esponenziale.*.*.*.0.0.
+.\flat.bemolle.*.*.*.0.0.
+.\forall .per ogni.*.*.*.0.0.
+.\frac.frazione.*.*.*.0.0.
+.\frac {.inizio frazione di numeratore.*.*.*.0.0.
+.\frac {1}{2}.un mezzo.*.*.*.0.0.
+.\frac {\partial }.derivata parziale in.*.*.*.0.0.
+.\frac {d^2}.derivata seconda in.*.*.*.0.0.
+.\frac {d^{2}}.derivata seconda in.*.*.*.0.0.
+.\frac{1}{2}.un mezzo.*.*.*.0.0.
+.\frac{\partial }{\partial a}.derivata parziale in de a.*.*.*.0.0.
+.\frac{\partial }{\partial b}.derivata parziale in de b.*.*.*.0.0.
+.\frac{\partial }{\partial c}.derivata parziale in de c.*.*.*.0.0.
+.\frac{\partial }{\partial d}.derivata parziale in de d.*.*.*.0.0.
+.\frac{\partial }{\partial e}.derivata parziale in de e.*.*.*.0.0.
+.\frac{\partial }{\partial f}.derivata parziale in de f.*.*.*.0.0.
+.\frac{\partial }{\partial g}.derivata parziale in de g.*.*.*.0.0.
+.\frac{\partial }{\partial h}.derivata parziale in de h.*.*.*.0.0.
+.\frac{\partial }{\partial i}.derivata parziale in de i.*.*.*.0.0.
+.\frac{\partial }{\partial l}.derivata parziale in de l.*.*.*.0.0.
+.\frac{\partial }{\partial m}.derivata parziale in de m.*.*.*.0.0.
+.\frac{\partial }{\partial n}.derivata parziale in de n.*.*.*.0.0.
+.\frac{\partial }{\partial o}.derivata parziale in de o.*.*.*.0.0.
+.\frac{\partial }{\partial p}.derivata parziale in de p.*.*.*.0.0.
+.\frac{\partial }{\partial q}.derivata parziale in de q.*.*.*.0.0.
+.\frac{\partial }{\partial r}.derivata parziale in de r.*.*.*.0.0.
+.\frac{\partial }{\partial s}.derivata parziale in de s.*.*.*.0.0.
+.\frac{\partial }{\partial t}.derivata parziale in de t.*.*.*.0.0.
+.\frac{\partial }{\partial u}.derivata parziale in de u.*.*.*.0.0.
+.\frac{\partial }{\partial v}.derivata parziale in de v.*.*.*.0.0.
+.\frac{\partial }{\partial x}.derivata parziale in de ics.*.*.*.0.0.
+.\frac{\partial }{\partial z}.derivata parziale in de z.*.*.*.0.0.
+.\frac{d^{2}}{da^{2}}.derivata seconda in de a.*.*.*.0.0.
+.\frac{d^{2}}{db^{2}}.derivata seconda in de b.*.*.*.0.0.
+.\frac{d^{2}}{dc^{2}}.derivata seconda in de c.*.*.*.0.0.
+.\frac{d^{2}}{dd^{2}}.derivata seconda in de d.*.*.*.0.0.
+.\frac{d^{2}}{de^{2}}.derivata seconda in de e.*.*.*.0.0.
+.\frac{d^{2}}{df^{2}}.derivata seconda in de f.*.*.*.0.0.
+.\frac{d^{2}}{dg^{2}}.derivata seconda in de g.*.*.*.0.0.
+.\frac{d^{2}}{dh^{2}}.derivata seconda in de h.*.*.*.0.0.
+.\frac{d^{2}}{di^{2}}.derivata seconda in de i.*.*.*.0.0.
+.\frac{d^{2}}{dl^{2}}.derivata seconda in de l.*.*.*.0.0.
+.\frac{d^{2}}{dm^{2}}.derivata seconda in de m.*.*.*.0.0.
+.\frac{d^{2}}{dn^{2}}.derivata seconda in de n.*.*.*.0.0.
+.\frac{d^{2}}{do^{2}}.derivata seconda in de o.*.*.*.0.0.
+.\frac{d^{2}}{dp^{2}}.derivata seconda in de p.*.*.*.0.0.
+.\frac{d^{2}}{dq^{2}}.derivata seconda in de q.*.*.*.0.0.
+.\frac{d^{2}}{dr^{2}}.derivata seconda in de r.*.*.*.0.0.
+.\frac{d^{2}}{ds^{2}}.derivata seconda in de s.*.*.*.0.0.
+.\frac{d^{2}}{dt^{2}}.derivata seconda in de t.*.*.*.0.0.
+.\frac{d^{2}}{du^{2}}.derivata seconda in de u.*.*.*.0.0.
+.\frac{d^{2}}{dv^{2}}.derivata seconda in de v.*.*.*.0.0.
+.\frac{d^{2}}{dx^{2}}.derivata seconda in de ics.*.*.*.0.0.
+.\frac{d^{2}}{dz^{2}}.derivata seconda in de z.*.*.*.0.0.
+.\frac{d^{3}}{da^{3}}.derivata terza in de a.*.*.*.0.0.
+.\frac{d^{3}}{db^{3}}.derivata terza in de b.*.*.*.0.0.
+.\frac{d^{3}}{dc^{3}}.derivata terza in de c.*.*.*.0.0.
+.\frac{d^{3}}{dd^{3}}.derivata terza in de d.*.*.*.0.0.
+.\frac{d^{3}}{de^{3}}.derivata terza in de e.*.*.*.0.0.
+.\frac{d^{3}}{df^{3}}.derivata terza in de f.*.*.*.0.0.
+.\frac{d^{3}}{dg^{3}}.derivata terza in de g.*.*.*.0.0.
+.\frac{d^{3}}{dh^{3}}.derivata terza in de h.*.*.*.0.0.
+.\frac{d^{3}}{di^{3}}.derivata terza in de i.*.*.*.0.0.
+.\frac{d^{3}}{dl^{3}}.derivata terza in de l.*.*.*.0.0.
+.\frac{d^{3}}{dm^{3}}.derivata terza in de m.*.*.*.0.0.
+.\frac{d^{3}}{dn^{3}}.derivata terza in de n.*.*.*.0.0.
+.\frac{d^{3}}{do^{3}}.derivata terza in de o.*.*.*.0.0.
+.\frac{d^{3}}{dp^{3}}.derivata terza in de p.*.*.*.0.0.
+.\frac{d^{3}}{dq^{3}}.derivata terza in de q.*.*.*.0.0.
+.\frac{d^{3}}{dr^{3}}.derivata terza in de r.*.*.*.0.0.
+.\frac{d^{3}}{ds^{3}}.derivata terza in de s.*.*.*.0.0.
+.\frac{d^{3}}{dt^{3}}.derivata terza in de t.*.*.*.0.0.
+.\frac{d^{3}}{du^{3}}.derivata terza in de u.*.*.*.0.0.
+.\frac{d^{3}}{dv^{3}}.derivata terza in de v.*.*.*.0.0.
+.\frac{d^{3}}{dx^{3}}.derivata terza in de ics.*.*.*.0.0.
+.\frac{d^{3}}{dz^{3}}.derivata terza in de z.*.*.*.0.0.
+.\frac{d}{da^{n-1}.derivata di ordine n meno uno rispetto ad a.*.*.*.0.0.
+.\frac{d}{da^{n}.derivata ennesima rispetto ad a.*.*.*.0.0.
+.\frac{d}{da}.derivata rispetto ad a di.*.*.*.0.0.
+.\frac{d}{db^{n-1}.derivata di ordine n meno uno rispetto ad b.*.*.*.0.0.
+.\frac{d}{db^{n}.derivata ennesima rispetto ad b.*.*.*.0.0.
+.\frac{d}{db}.derivata rispetto ad b di.*.*.*.0.0.
+.\frac{d}{dc^{n-1}.derivata di ordine n meno uno rispetto ad c.*.*.*.0.0.
+.\frac{d}{dc^{n}.derivata ennesima rispetto ad c.*.*.*.0.0.
+.\frac{d}{dc}.derivata rispetto ad c di.*.*.*.0.0.
+.\frac{d}{dd^{n-1}.derivata di ordine n meno uno rispetto ad d.*.*.*.0.0.
+.\frac{d}{dd^{n}.derivata ennesima rispetto ad d.*.*.*.0.0.
+.\frac{d}{dd}.derivata rispetto ad d di.*.*.*.0.0.
+.\frac{d}{de^{n-1}.derivata di ordine n meno uno rispetto ad e.*.*.*.0.0.
+.\frac{d}{de^{n}.derivata ennesima rispetto ad e.*.*.*.0.0.
+.\frac{d}{de}.derivata rispetto ad e di.*.*.*.0.0.
+.\frac{d}{df^{n-1}.derivata di ordine n meno uno rispetto ad f.*.*.*.0.0.
+.\frac{d}{df^{n}.derivata ennesima rispetto ad f.*.*.*.0.0.
+.\frac{d}{df}.derivata rispetto ad f di.*.*.*.0.0.
+.\frac{d}{dg^{n-1}.derivata di ordine n meno uno rispetto ad g.*.*.*.0.0.
+.\frac{d}{dg^{n}.derivata ennesima rispetto ad g.*.*.*.0.0.
+.\frac{d}{dg}.derivata rispetto ad g di.*.*.*.0.0.
+.\frac{d}{dh^{n-1}.derivata di ordine n meno uno rispetto ad h.*.*.*.0.0.
+.\frac{d}{dh^{n}.derivata ennesima rispetto ad h.*.*.*.0.0.
+.\frac{d}{dh}.derivata rispetto ad h di.*.*.*.0.0.
+.\frac{d}{di^{n-1}.derivata di ordine n meno uno rispetto ad i.*.*.*.0.0.
+.\frac{d}{di^{n}.derivata ennesima rispetto ad i.*.*.*.0.0.
+.\frac{d}{di}.derivata rispetto ad i di.*.*.*.0.0.
+.\frac{d}{dl^{n-1}.derivata di ordine n meno uno rispetto ad l.*.*.*.0.0.
+.\frac{d}{dl^{n}.derivata ennesima rispetto ad l.*.*.*.0.0.
+.\frac{d}{dl}.derivata rispetto ad l di.*.*.*.0.0.
+.\frac{d}{dm^{n-1}.derivata di ordine n meno uno rispetto ad m.*.*.*.0.0.
+.\frac{d}{dm^{n}.derivata ennesima rispetto ad m.*.*.*.0.0.
+.\frac{d}{dm}.derivata rispetto ad m di.*.*.*.0.0.
+.\frac{d}{dn^{n-1}.derivata di ordine n meno uno rispetto ad n.*.*.*.0.0.
+.\frac{d}{dn^{n}.derivata ennesima rispetto ad n.*.*.*.0.0.
+.\frac{d}{dn}.derivata rispetto ad n di.*.*.*.0.0.
+.\frac{d}{do^{n-1}.derivata di ordine n meno uno rispetto ad o.*.*.*.0.0.
+.\frac{d}{do^{n}.derivata ennesima rispetto ad o.*.*.*.0.0.
+.\frac{d}{do}.derivata rispetto ad o di.*.*.*.0.0.
+.\frac{d}{dp^{n-1}.derivata di ordine n meno uno rispetto ad p.*.*.*.0.0.
+.\frac{d}{dp^{n}.derivata ennesima rispetto ad p.*.*.*.0.0.
+.\frac{d}{dp}.derivata rispetto ad p di.*.*.*.0.0.
+.\frac{d}{dq^{n-1}.derivata di ordine n meno uno rispetto ad q.*.*.*.0.0.
+.\frac{d}{dq^{n}.derivata ennesima rispetto ad q.*.*.*.0.0.
+.\frac{d}{dq}.derivata rispetto ad q di.*.*.*.0.0.
+.\frac{d}{dr^{n-1}.derivata di ordine n meno uno rispetto ad r.*.*.*.0.0.
+.\frac{d}{dr^{n}.derivata ennesima rispetto ad r.*.*.*.0.0.
+.\frac{d}{dr}.derivata rispetto ad r di.*.*.*.0.0.
+.\frac{d}{ds^{n-1}.derivata di ordine n meno uno rispetto ad s.*.*.*.0.0.
+.\frac{d}{ds^{n}.derivata ennesima rispetto ad s.*.*.*.0.0.
+.\frac{d}{ds}.derivata rispetto ad s di.*.*.*.0.0.
+.\frac{d}{dt^{n-1}.derivata di ordine n meno uno rispetto ad t.*.*.*.0.0.
+.\frac{d}{dt^{n}.derivata ennesima rispetto ad t.*.*.*.0.0.
+.\frac{d}{dt}.derivata rispetto ad t di.*.*.*.0.0.
+.\frac{d}{du^{n-1}.derivata di ordine n meno uno rispetto ad u.*.*.*.0.0.
+.\frac{d}{du^{n}.derivata ennesima rispetto ad u.*.*.*.0.0.
+.\frac{d}{du}.derivata rispetto ad u di.*.*.*.0.0.
+.\frac{d}{dv^{n-1}.derivata di ordine n meno uno rispetto ad v.*.*.*.0.0.
+.\frac{d}{dv^{n}.derivata ennesima rispetto ad v.*.*.*.0.0.
+.\frac{d}{dv}.derivata rispetto ad v di.*.*.*.0.0.
+.\frac{d}{dx^{n-1}.derivata di ordine n meno uno rispetto ad x.*.*.*.0.0.
+.\frac{d}{dx^{n}.derivata ennesima rispetto ad x.*.*.*.0.0.
+.\frac{d}{dx}.derivata rispetto ad ics di.*.*.*.0.0.
+.\frac{d}{dz^{n-1}.derivata di ordine n meno uno rispetto ad z.*.*.*.0.0.
+.\frac{d}{dz^{n}.derivata ennesima rispetto ad z.*.*.*.0.0.
+.\frac{d}{dz}.derivata rispetto ad z di.*.*.*.0.0.
+.\frown.arco.*.*.*.0.0.
+.\gamma.gamma.*.*.*.0.0.
+.\Gamma.Gamma maiuscolo.*.*.*.1.0.
+.\gcd.gcd.*.*.*.0.0.
+.\geq.Maggiore o uguale di.*.*.*.0.0.
+.\ge.maggiore o uguale di.*.*.*.0.0.
+.\gg.molto maggiore di.*.*.*.0.0.
+.\gt.Maggiore di.*.*.*.0.0.
+.\hbar.h tagliato.*.*.*.0.0.
+.\hdotsfor {3}.linea di puntini.*.*.*.0.0.
+.\heartsuit.cuore.*.*.*.0.0.
+.\hom. omomorfismo di.*.*.*.0.0.
+.\iiiint.integrale quadruplo di.*.*.*.0.0.
+.\iiint.integrale triplo di.*.*.*.0.0.
+.\iint.integrale doppio di.*.*.*.0.0.
+.\Im. parte immaginaria di.*.*.*.0.0.
+.\imath.i.*.*.*.0.0.
+.\impliedby.implicato.*.*.*.0.0.
+.\implies.implica.*.*.*.0.0.
+.\in .appartiene a.*.*.*.0.0.
+.\inf.estremo inferiore di.*.*.*.0.0.
+.\infty .infinito.*.*.*.0.0.
+.\int .integrale di.*.*.*.0.0.
+.\int \sb 0 ^ 1.integrale tra 0 e 1 di.*.*.*.0.0.
+.\int \sb 0 ^1.integrale tra 0 e 1 di.*.*.*.0.0.
+.\int \sb 0^ 1.integrale tra 0 e 1 di.*.*.*.0.0.
+.\int \sb 0^1.integrale tra 0 e 1 di.*.*.*.0.0.
+.\int \sb {0} ^ {1}.integrale tra 0 e 1 di.*.*.*.0.0.
+.\int \sb {0}^{1}.integrale tra 0 e 1 di.*.*.*.0.0.
+.\iota.iota.*.*.*.0.0.
+.\ipsilon.ipsilon.*.*.*.0.0.
+.\jmath.j.*.*.*.0.0.
+.\kappa.cappa.*.*.*.0.0.
+.\ker.kernel.*.*.*.0.0.
+.\lambda.lambda.*.*.*.0.0.
+.\Lambda.Lambda maiuscolo.*.*.*.1.0.
+.\left (.aperta parentesi tonda.*.*.*.0.0.
+.\left ( x \right ).di ics.*.*.*.0.0.
+.\left ( x\right ).di ics.*.*.*.0.0.
+.\left (x \right ).di ics.*.*.*.0.0.
+.\left (x\right ).di ics.*.*.*.0.0.
+.\left [.aperta parentesi quadra.*.*.*.0.0.
+.\left \{.aperta parentesi graffa.*.*.*.0.0.
+.\left \|.inizio norma.*.*.*.0.0.
+.\left (n-1\right )!.aperta parentesi tonda enne meno uno chiusa parentesi tonda fattoriale.*.*.*.0.0.
+.\left[.aperta parentesi quadra.*.*.*.0.0.
+.\leftarrow.a cui tende.*.*.*.0.0.
+.\leftrightarrow.equivale.*.*.*.0.0.
+.\Leftrightarrow.equivale.*.*.*.1.0.
+.\leq.minore o uguale di.*.*.*.0.0.
+.\lg.logaritmo in base dieci di.*.*.*.0.0.
+.\lim.limite.*.*.*.0.0.
+.\lim \sb.limite per.*.*.*.0.0.
+.\lim \sb {x\to +\infty }.limite per x che tende a più infinito di.*.*.*.0.0.
+.\lim \sb {x\to -\infty }.limite per x che tende a meno infinito di.*.*.*.0.0.
+.\lim \sb {x\to 0^+}.limite per x che tende a zero dalla destra.*.*.*.0.0.
+.\lim \sb {x\to 0^-}.limite per x che tende a zero dalla sinistra.*.*.*.0.0.
+.\lim \sb {x\to 0}.limite per x che tende a zero.*.*.*.0.0.
+.\lim \sb {x\to \infty }.limite per x che tende a infinito di.*.*.*.0.0.
+.\lim \sb {x\to \pm \infty }.limite per x che tende a più o meno infinito di.*.*.*.0.0.
+.\liminf.lim inf.*.*.*.0.0.
+.\liminf \sb.lim inf per.*.*.*.0.0.
+.\limsup.lim sup.*.*.*.0.0.
+.\limsup \sb.lim sup per.*.*.*.0.0.
+.\ll.molto minore di.*.*.*.0.0.
+.\ln.logaritmo naturale di.*.*.*.0.0.
+.\log.logaritmo.*.*.*.0.0.
+.\log \sb .logaritmo di base.*.*.*.0.0.
+.\log \sb {a}(b).logaritmo in base a di b.*.*.*.0.0.
+.\log \sb {e}.logaritmo in base e di.*.*.*.0.0.
+.\longleftarrow.a cui tende.*.*.*.0.0.
+.\longrightarrow.che tende a.*.*.*.0.0.
+.\lt.Minore di.*.*.*.0.0.
+.\lvert.inizio valore assoluto.*.*.*.0.0.
+.\lVert.inizio norma.*.*.*.1.0.
+.\mathbb C.insieme C dei numeri complessi.*.*.*.0.0.
+.\mathbb N.insieme N dei numeri naturali.*.*.*.0.0.
+.\mathbb Q.insieme Q dei numeri razionali.*.*.*.0.0.
+.\mathbb R.insieme R dei numeri reali.*.*.*.0.0.
+.\mathbb Z.insieme Z dei numeri relativi.*.*.*.0.0.
+.\max.massimo.*.*.*.0.0.
+.\mid.sbarra.*.*.*.0.0.
+.\min.minimo.*.*.*.0.0.
+.\models.inferenza.*.*.*.0.0.
+.\mp.meno o più.*.*.*.0.0.
+.\mu.mu.*.*.*.0.0.
+.\nabla.nabla.*.*.*.0.0.
+.\nabla ^{2}.laplaciano.*.*.*.0.0.
+.\neg.negazione di.*.*.*.0.0.
+.\neq.diverso da.*.*.*.0.0.
+.\nexists.non esiste.*.*.*.0.0.
+.\ni.è contenuto in.*.*.*.0.0.
+.\nLeftarrow.non implicato.*.*.*.1.0.
+.\nLeftrightarrow.non equivale.*.*.*.1.0.
+.\not \exists.non esiste.*.*.*.0.0.
+.\not \in.non appartiene a.*.*.*.0.0.
+.\not \subset.non incluso in.*.*.*.0.0.
+.\not \subseteq.non è un sottoinsieme di.*.*.*.0.0.
+.\not \supset.non include.*.*.*.0.0.
+.\not \supseteq.non è un sovrainsieme di.*.*.*.0.0.
+.\notin.non appartiene a.*.*.*.0.0.
+.\nRightarrow.non implica.*.*.*.1.0.
+.\nsubseteq.non è un sottoinsieme di.*.*.*.0.0.
+.\nsupseteq.non è un sovrainsieme di.*.*.*.0.0.
+.\nu.ni.*.*.*.0.0.
+.\o.omicron.*.*.*.0.0.
+.\odot.punto prodotto col cerchio.*.*.*.0.0.
+.\oint.circuitazione di.*.*.*.0.0.
+.\omega.omega.*.*.*.0.0.
+.\Omega.Omega maiuscolo.*.*.*.1.0.
+.\ominus.meno col cerchio.*.*.*.0.0.
+.\oplus.+ col cerchio.*.*.*.0.0.
+.\oslash.slesh col cerchio.*.*.*.0.0.
+.\otimes.x col cerchio.*.*.*.0.0.
+.\overline.soprasegnato.*.*.*.0.0.
+.\overrightarrow {.vettore aperta parentesi graffa.*.*.*.0.0.
+.\parallel.è parallelo a.*.*.*.0.0.
+.\partial.de.*.*.*.0.0.
+.\perp.è perpendicolare a.*.*.*.0.0.
+.\phi.fi.*.*.*.0.0.
+.\Phi.Fi maiuscolo.*.*.*.1.0.
+.\pi.pigreco.*.*.*.0.0.
+.\Pi.Pigreco maiuscolo.*.*.*.1.0.
+.\pm.più o meno.*.*.*.0.0.
+.\Pr. prodotto.*.*.*.0.0.
+.\prec.predecessore di.*.*.*.0.0.
+.\preceq.predecessore o uguale a .*.*.*.0.0.
+.\prime.primo.*.*.*.0.0.
+.\prime \prime.secondo.*.*.*.0.0.
+.\prod.produttoria.*.*.*.0.0.
+.\prod \limits.produttoria di.*.*.*.0.0.
+.\prod \limits \sb {i=0} ^ \infty.produttoria per i che va da 0 a infinito.*.*.*.0.0.
+.\prod \limits \sb {i=0} ^ n.produttoria per i che va da 0 a n.*.*.*.0.0.
+.\prod \limits \sb {i=0} ^ {\infty }.produttoria per i che va da 0 a infinito.*.*.*.0.0.
+.\prod \limits \sb {i=0} ^ {n}.produttoria per i che va da 0 a n.*.*.*.0.0.
+.\prod \limits \sb {i=0} ^\infty.produttoria per i che va da 0 a infinito.*.*.*.0.0.
+.\prod \limits \sb {i=0} ^n.produttoria per i che va da 0 a n.*.*.*.0.0.
+.\prod \limits \sb {i=0}^ \infty.produttoria per i che va da 0 a infinito.*.*.*.0.0.
+.\prod \limits \sb {i=0}^ n.produttoria per i che va da 0 a n.*.*.*.0.0.
+.\prod \limits \sb {i=0}^\infty.produttoria per i che va da 0 a infinito.*.*.*.0.0.
+.\prod \limits \sb {i=0}^n.produttoria per i che va da 0 a n.*.*.*.0.0.
+.\prod \limits \sb {i=0}^{\infty }.produttoria per i che va da 0 a infinito.*.*.*.0.0.
+.\prod \limits \sb {i=0}^{n}.produttoria per i che va da 0 a n.*.*.*.0.0.
+.\prod \limits \sb {i=1} ^ \infty.produttoria per i che va da 1 a infinito.*.*.*.0.0.
+.\prod \limits \sb {i=1} ^ n.produttoria per i che va da 1 a n.*.*.*.0.0.
+.\prod \limits \sb {i=1} ^ {\infty }.produttoria per i che va da 1 a infinito.*.*.*.0.0.
+.\prod \limits \sb {i=1} ^ {n}.produttoria per i che va da 1 a n.*.*.*.0.0.
+.\prod \limits \sb {i=1} ^\infty.produttoria per i che va da 1 a infinito.*.*.*.0.0.
+.\prod \limits \sb {i=1} ^n.produttoria per i che va da 1 a n.*.*.*.0.0.
+.\prod \limits \sb {i=1}^ \infty.produttoria per i che va da 1 a infinito.*.*.*.0.0.
+.\prod \limits \sb {i=1}^ n.produttoria per i che va da 1 a n.*.*.*.0.0.
+.\prod \limits \sb {i=1}^\infty.produttoria per i che va da 1 a infinito.*.*.*.0.0.
+.\prod \limits \sb {i=1}^n.produttoria per i che va da 1 a n.*.*.*.0.0.
+.\prod \limits \sb {i=1}^{\infty }.produttoria per i che va da 1 a infinito.*.*.*.0.0.
+.\prod \limits \sb {i=1}^{n}.produttoria per i che va da 1 a n.*.*.*.0.0.
+.\prod \limits \sb {k=0} ^ \infty.produttoria per k che va da 0 a infinito.*.*.*.0.0.
+.\prod \limits \sb {k=0} ^ n.produttoria per k che va da 0 a n.*.*.*.0.0.
+.\prod \limits \sb {k=0} ^ {\infty }.produttoria per k che va da 0 a infinito.*.*.*.0.0.
+.\prod \limits \sb {k=0} ^ {n}.produttoria per k che va da 0 a n.*.*.*.0.0.
+.\prod \limits \sb {k=0} ^\infty.produttoria per k che va da 0 a infinito.*.*.*.0.0.
+.\prod \limits \sb {k=0} ^n.produttoria per k che va da 0 a n.*.*.*.0.0.
+.\prod \limits \sb {k=0}^ \infty.produttoria per k che va da 0 a infinito.*.*.*.0.0.
+.\prod \limits \sb {k=0}^ n.produttoria per k che va da 0 a n.*.*.*.0.0.
+.\prod \limits \sb {k=0}^\infty.produttoria per k che va da 0 a infinito.*.*.*.0.0.
+.\prod \limits \sb {k=0}^n.produttoria per k che va da 0 a n.*.*.*.0.0.
+.\prod \limits \sb {k=0}^{\infty }.produttoria per k che va da 0 a infinito.*.*.*.0.0.
+.\prod \limits \sb {k=0}^{n}.produttoria per k che va da 0 a n.*.*.*.0.0.
+.\prod \limits \sb {k=1} ^ \infty.produttoria per k che va da 1 a infinito.*.*.*.0.0.
+.\prod \limits \sb {k=1} ^ n.produttoria per k che va da 1 a n.*.*.*.0.0.
+.\prod \limits \sb {k=1} ^ {\infty }.produttoria per k che va da 1 a infinito.*.*.*.0.0.
+.\prod \limits \sb {k=1} ^ {n}.produttoria per k che va da 1 a n.*.*.*.0.0.
+.\prod \limits \sb {k=1} ^\infty.produttoria per k che va da 1 a infinito.*.*.*.0.0.
+.\prod \limits \sb {k=1} ^n.produttoria per k che va da 1 a n.*.*.*.0.0.
+.\prod \limits \sb {k=1}^ \infty.produttoria per k che va da 1 a infinito.*.*.*.0.0.
+.\prod \limits \sb {k=1}^ n.produttoria per k che va da 1 a n.*.*.*.0.0.
+.\prod \limits \sb {k=1}^\infty.produttoria per k che va da 1 a infinito.*.*.*.0.0.
+.\prod \limits \sb {k=1}^n.produttoria per k che va da 1 a n.*.*.*.0.0.
+.\prod \limits \sb {k=1}^{\infty }.produttoria per k che va da 1 a infinito.*.*.*.0.0.
+.\prod \limits \sb {k=1}^{n}.produttoria per k che va da 1 a n.*.*.*.0.0.
+.\prod \limits \sb {n=0} ^ \infty.produttoria per n che va da 0 a infinito.*.*.*.0.0.
+.\prod \limits \sb {n=0} ^ {\infty }.produttoria per n che va da 0 a infinito.*.*.*.0.0.
+.\prod \limits \sb {n=0} ^\infty.produttoria per n che va da 0 a infinito.*.*.*.0.0.
+.\prod \limits \sb {n=0}^ \infty.produttoria per n che va da 0 a infinito.*.*.*.0.0.
+.\prod \limits \sb {n=0}^\infty.produttoria per n che va da 0 a infinito.*.*.*.0.0.
+.\prod \limits \sb {n=0}^{\infty }.produttoria per n che va da 0 a infinito.*.*.*.0.0.
+.\prod \limits \sb {n=1} ^ \infty.produttoria per n che va da 1 a infinito.*.*.*.0.0.
+.\prod \limits \sb {n=1} ^ {\infty }.produttoria per n che va da 1 a infinito.*.*.*.0.0.
+.\prod \limits \sb {n=1} ^\infty.produttoria per n che va da 1 a infinito.*.*.*.0.0.
+.\prod \limits \sb {n=1}^ \infty.produttoria per n che va da 1 a infinito.*.*.*.0.0.
+.\prod \limits \sb {n=1}^\infty.produttoria per n che va da 1 a infinito.*.*.*.0.0.
+.\prod \limits \sb {n=1}^{\infty }.produttoria per n che va da 1 a infinito.*.*.*.0.0.
+.\projlim. .*.*.*.0.0.
+.\propto.è proporzionale a.*.*.*.0.0.
+.\protect \mathaccentV {vec}17E.vettore.*.*.*.0.0.
+.\protect \mathaccentV {vec}17E{i}.vettore i.*.*.*.0.0.
+.\protect \mathaccentV {vec}17E{j}.vettore j.*.*.*.0.0.
+.\protect \mathaccentV {vec}17E{s}.vettore s.*.*.*.0.0.
+.\protect \mathaccentV {vec}17E{t}.vettore t.*.*.*.0.0.
+.\protect \mathaccentV {vec}17E{v}.vettore v.*.*.*.0.0.
+.\protect \mathaccentV {vec}17E{w}.vettore w.*.*.*.0.0.
+.\protect \mathaccentV {vec}17E{x}.vettore x.*.*.*.0.0.
+.\protect \mathaccentV {vec}17E{y}.vettore y.*.*.*.0.0.
+.\psi.psi.*.*.*.0.0.
+.\Psi.Psi maiuscolo.*.*.*.1.0.
+.\qopname \relax m{lim}\sb {.limite per.*.*.*.0.0.
+.\qopname \relax m{lim}\sb {x\to +\infty }.limite per x che tende a più infinito di.*.*.*.0.0.
+.\qquad . .*.*.*.0.0.
+.\quad . .*.*.*.0.0.
+.\Re. parte reale di.*.*.*.0.0.
+.\rho.ro.*.*.*.0.0.
+.\right ).chiusa parentesi tonda.*.*.*.0.0.
+.\right \|.fine norma.*.*.*.0.0.
+.\right \}.chiusa parentesi graffa.*.*.*.0.0.
+.\right ].chiusa parentesi quadra.*.*.*.0.0.
+.\right].chiusa parentesi quadra.*.*.*.0.0.
+.\rightarrow.che tende a.*.*.*.0.0.
+.\Rightarrow.implica.*.*.*.1.0.
+.\rvert.fine valore assoluto.*.*.*.0.0.
+.\rVert.fine norma.*.*.*.1.0.
+.\sb.pedice.*.*.*.0.0.
+.\sec.secante.*.*.*.0.0.
+.\sec ^2.secante al quadrato di.*.*.*.0.0.
+.\sec ^3.secante al cubo di.*.*.*.0.0.
+.\sec ^{2}.secante al quadrato di.*.*.*.0.0.
+.\sec ^{3}.secante al cubo di.*.*.*.0.0.
+.\setminus.differenza.*.*.*.0.0.
+.\sharp.sharp.*.*.*.0.0.
+.\sigma.sigma.*.*.*.0.0.
+.\Sigma.Sigma maiuscolo.*.*.*.1.0.
+.\sim.simile a.*.*.*.0.0.
+.\simeq.simile o uguale a.*.*.*.0.0.
+.\sin.seno .*.*.*.0.0.
+.\sin ^2.seno al quadrato di.*.*.*.0.0.
+.\sin ^3.seno al cubo di.*.*.*.0.0.
+.\sin ^{2}.seno al quadrato di.*.*.*.0.0.
+.\sin ^{3}.seno al cubo di .*.*.*.0.0.
+.\sinh.seno iperbolico.*.*.*.0.0.
+.\smile.prodotto cup.*.*.*.0.0.
+.\spadesuit.picche.*.*.*.0.0.
+.\sqcap.massimo comune divisore.*.*.*.0.0.
+.\sqcup.unione disgiunta.*.*.*.0.0.
+.\sqrt.radice.*.*.*.0.0.
+.\sqrt [.radice di ordine aperta parentesi quadra.*.*.*.0.0.
+.\sqrt [3].radice cubica di .*.*.*.0.0.
+.\sqrt [n].radice ennesima di.*.*.*.0.0.
+.\sqrt {.radice quadrata di aperta parentesi graffa.*.*.*.0.0.
+.\sqsubseteq.sottoinsieme (simbolo squadrato).*.*.*.0.0.
+.\sqsupseteq.sovrainsieme (simbolo squadrato).*.*.*.0.0.
+.\stackrel {\frown }{.arco aperta parentesi graffa.*.*.*.0.0.
+.\star.star.*.*.*.0.0.
+.\subset.sottoinsieme proprio di.*.*.*.0.0.
+.\subseteq.sottoinsieme di.*.*.*.0.0.
+.\subsetneq.sottoinsieme proprio di.*.*.*.0.0.
+.\succ.successore di .*.*.*.0.0.
+.\succeq.successore o uguale a.*.*.*.0.0.
+.\sum .sommatoria.*.*.*.0.0.
+.\sum \limits.sommatoria di.*.*.*.0.0.
+.\sum \limits \sb {i=0} ^ \infty.sommatoria per i che va da 0 a infinito.*.*.*.0.0.
+.\sum \limits \sb {i=0} ^ n.sommatoria per i che va da 0 a n.*.*.*.0.0.
+.\sum \limits \sb {i=0} ^ {\infty }.sommatoria per i che va da 0 a infinito.*.*.*.0.0.
+.\sum \limits \sb {i=0} ^ {n}.sommatoria per i che va da 0 a n.*.*.*.0.0.
+.\sum \limits \sb {i=0} ^\infty.sommatoria per i che va da 0 a infinito.*.*.*.0.0.
+.\sum \limits \sb {i=0} ^n.sommatoria per i che va da 0 a n.*.*.*.0.0.
+.\sum \limits \sb {i=0}^ \infty.sommatoria per i che va da 0 a infinito.*.*.*.0.0.
+.\sum \limits \sb {i=0}^ n.sommatoria per i che va da 0 a n.*.*.*.0.0.
+.\sum \limits \sb {i=0}^\infty.sommatoria per i che va da 0 a infinito.*.*.*.0.0.
+.\sum \limits \sb {i=0}^n.sommatoria per i che va da 0 a n.*.*.*.0.0.
+.\sum \limits \sb {i=0}^{\infty }.sommatoria per i che va da 0 a infinito.*.*.*.0.0.
+.\sum \limits \sb {i=0}^{n}.sommatoria per i che va da 0 a n.*.*.*.0.0.
+.\sum \limits \sb {i=1} ^ \infty.sommatoria per i che va da 1 a infinito.*.*.*.0.0.
+.\sum \limits \sb {i=1} ^ n.sommatoria per i che va da 1 a n.*.*.*.0.0.
+.\sum \limits \sb {i=1} ^ {\infty }.sommatoria per i che va da 1 a infinito.*.*.*.0.0.
+.\sum \limits \sb {i=1} ^ {n}.sommatoria per i che va da 1 a n.*.*.*.0.0.
+.\sum \limits \sb {i=1} ^\infty.sommatoria per i che va da 1 a infinito.*.*.*.0.0.
+.\sum \limits \sb {i=1} ^n.sommatoria per i che va da 1 a n.*.*.*.0.0.
+.\sum \limits \sb {i=1}^ \infty.sommatoria per i che va da 1 a infinito.*.*.*.0.0.
+.\sum \limits \sb {i=1}^ n.sommatoria per i che va da 1 a n.*.*.*.0.0.
+.\sum \limits \sb {i=1}^\infty.sommatoria per i che va da 1 a infinito.*.*.*.0.0.
+.\sum \limits \sb {i=1}^n.sommatoria per i che va da 1 a n.*.*.*.0.0.
+.\sum \limits \sb {i=1}^{\infty }.sommatoria per i che va da 1 a infinito.*.*.*.0.0.
+.\sum \limits \sb {i=1}^{n}.sommatoria per i che va da 1 a n.*.*.*.0.0.
+.\sum \limits \sb {k=0} ^ \infty.sommatoria per k che va da 0 a infinito.*.*.*.0.0.
+.\sum \limits \sb {k=0} ^ n.sommatoria per k che va da 0 a n.*.*.*.0.0.
+.\sum \limits \sb {k=0} ^ {\infty }.sommatoria per k che va da 0 a infinito.*.*.*.0.0.
+.\sum \limits \sb {k=0} ^ {n}.sommatoria per k che va da 0 a n.*.*.*.0.0.
+.\sum \limits \sb {k=0} ^\infty.sommatoria per k che va da 0 a infinito.*.*.*.0.0.
+.\sum \limits \sb {k=0} ^n.sommatoria per k che va da 0 a n.*.*.*.0.0.
+.\sum \limits \sb {k=0}^ \infty.sommatoria per k che va da 0 a infinito.*.*.*.0.0.
+.\sum \limits \sb {k=0}^ n.sommatoria per k che va da 0 a n.*.*.*.0.0.
+.\sum \limits \sb {k=0}^\infty.sommatoria per k che va da 0 a infinito.*.*.*.0.0.
+.\sum \limits \sb {k=0}^n.sommatoria per k che va da 0 a n.*.*.*.0.0.
+.\sum \limits \sb {k=0}^{\infty }.sommatoria per k che va da 0 a infinito.*.*.*.0.0.
+.\sum \limits \sb {k=0}^{n}.sommatoria per k che va da 0 a n.*.*.*.0.0.
+.\sum \limits \sb {k=1} ^ \infty.sommatoria per k che va da 1 a infinito.*.*.*.0.0.
+.\sum \limits \sb {k=1} ^ n.sommatoria per k che va da 1 a n.*.*.*.0.0.
+.\sum \limits \sb {k=1} ^ {\infty }.sommatoria per k che va da 1 a infinito.*.*.*.0.0.
+.\sum \limits \sb {k=1} ^ {n}.sommatoria per k che va da 1 a n.*.*.*.0.0.
+.\sum \limits \sb {k=1} ^\infty.sommatoria per k che va da 1 a infinito.*.*.*.0.0.
+.\sum \limits \sb {k=1} ^n.sommatoria per k che va da 1 a n.*.*.*.0.0.
+.\sum \limits \sb {k=1}^ \infty.sommatoria per k che va da 1 a infinito.*.*.*.0.0.
+.\sum \limits \sb {k=1}^ n.sommatoria per k che va da 1 a n.*.*.*.0.0.
+.\sum \limits \sb {k=1}^\infty.sommatoria per k che va da 1 a infinito.*.*.*.0.0.
+.\sum \limits \sb {k=1}^n.sommatoria per k che va da 1 a n.*.*.*.0.0.
+.\sum \limits \sb {k=1}^{\infty }.sommatoria per k che va da 1 a infinito.*.*.*.0.0.
+.\sum \limits \sb {k=1}^{n}.sommatoria per k che va da 1 a n.*.*.*.0.0.
+.\sum \limits \sb {n=0} ^ \infty.sommatoria per n che va da 0 a infinito.*.*.*.0.0.
+.\sum \limits \sb {n=0} ^ {\infty }.sommatoria per n che va da 0 a infinito.*.*.*.0.0.
+.\sum \limits \sb {n=0} ^\infty.sommatoria per n che va da 0 a infinito.*.*.*.0.0.
+.\sum \limits \sb {n=0}^ \infty.sommatoria per n che va da 0 a infinito.*.*.*.0.0.
+.\sum \limits \sb {n=0}^\infty.sommatoria per n che va da 0 a infinito.*.*.*.0.0.
+.\sum \limits \sb {n=0}^{\infty }.sommatoria per n che va da 0 a infinito.*.*.*.0.0.
+.\sum\limits_{.sommatoria inizio limite inferiore aperta parentesi graffa.*.*.*.0.0.
+.\sup.estremo superiore di.*.*.*.0.0.
+.\supset.sovrainsieme proprio di.*.*.*.0.0.
+.\supseteq.sovrainsieme di.*.*.*.0.0.
+.\supsetneq.sovrainsieme proprio di.*.*.*.0.0.
+.\supsetq.Include.*.*.*.0.0.
+.\surd.radice quadrata.*.*.*.0.0.
+.\tan.tangente.*.*.*.0.0.
+.\tan ^2.tangente al quadrato di.*.*.*.0.0.
+.\tan ^3.tangente al cubo di .*.*.*.0.0.
+.\tan ^{2}.tangente al quadrato di.*.*.*.0.0.
+.\tan ^{3}.tangente al cubo di .*.*.*.0.0.
+.\tanh.tangente iperbolica.*.*.*.0.0.
+.\tau.tau.*.*.*.0.0.
+.\text.testo.*.*.*.0.0.
+.\theta.teta.*.*.*.0.0.
+.\Theta.Teta maiuscolo.*.*.*.1.0.
+.\times.per (X grande).*.*.*.0.0.
+.\to.che tende a.*.*.*.0.0.
+.\top.tautologia.*.*.*.0.0.
+.\triangle.triangolo.*.*.*.0.0.
+.\triangleq.Uguale per definizione a.*.*.*.0.0.
+.\uplus.unione con + dentro.*.*.*.0.0.
+.\upsilon.upsilon.*.*.*.0.0.
+.\Upsilon.Upsilon maiuscolo.*.*.*.1.0.
+.\varchi.chi.*.*.*.0.0.
+.\varepsilon.epsilon.*.*.*.0.0.
+.\varinjlim. .*.*.*.0.0.
+.\varliminf. .*.*.*.0.0.
+.\varlimsup. .*.*.*.0.0.
+.\varphi.fi.*.*.*.0.0.
+.\varpi.pigreco.*.*.*.0.0.
+.\varprojlim . .*.*.*.0.0.
+.\varrho.ro.*.*.*.0.0.
+.\varsigma.sigma.*.*.*.0.0.
+.\vartheta.teta.*.*.*.0.0.
+.\vdots.puntini.*.*.*.0.0.
+.\vec.vettore.*.*.*.0.0.
+.\vec {i}.vettore i.*.*.*.0.0.
+.\vec {j}.vettore j.*.*.*.0.0.
+.\vec {s}.vettore s.*.*.*.0.0.
+.\vec {t}.vettore t.*.*.*.0.0.
+.\vec {v}.vettore v.*.*.*.0.0.
+.\vec {w}.vettore w.*.*.*.0.0.
+.\vec {x}.vettore x.*.*.*.0.0.
+.\vec {y}.vettore y.*.*.*.0.0.
+.\vee.vel.*.*.*.0.0.
+.\vert.sbarra.*.*.*.0.0.
+.\Vert.doppia sbarra.*.*.*.1.0.
+.\wedge.vedge.*.*.*.0.0.
+.\widehat.angolo.*.*.*.0.0.
+.\wp.insieme delle parti di.*.*.*.0.0.
+.\wr.prodotto intrecciato.*.*.*.0.0.
+.\xi.csi.*.*.*.0.0.
+.\Xi.Csi maiuscolo.*.*.*.1.0.
+.\zeta.zeta.*.*.*.0.0.
+.\{.aperta parentesi graffa.*.*.*.0.0.
+.\}.chiusa parentesi graffa.*.*.*.0.0.
+.^.apice.*.*.*.0.0.
+.^ 2.al quadrato.*.*.*.0.0.
+.^ 3.al cubo.*.*.*.0.0.
+.^ \prime.primo.*.*.*.0.0.
+.^ { \prime \prime }.secondo.*.*.*.0.0.
+.^ {2}.al quadrato.*.*.*.0.0.
+.^ {3}.al cubo.*.*.*.0.0.
+.^ {\prime \prime }.secondo.*.*.*.0.0.
+.^ {\prime }.primo.*.*.*.0.0.
+.^2.al quadrato.*.*.*.0.0.
+.^3.al cubo.*.*.*.0.0.
+.^\prime.primo.*.*.*.0.0.
+.^{2}.al quadrato.*.*.*.0.0.
+.^{3}.al cubo.*.*.*.0.0.
+.^{\prime \prime }.secondo.*.*.*.0.0.
+.^{\prime }.primo.*.*.*.0.0.
+.^{}.al quadrato.*.*.*.0.0.
+.D_{x^{2}}. derivata seconda rispetto ad ics.*.*.*.0.0.
+.D_{xx}.derivata seconda rispetto ad ics.*.*.*.0.0.
+.D_{xy}. derivata seconda rispetto ad ics e poi rispetto ad ipsilon.*.*.*.0.0.
+.D_{x}.derivata rispetto ad ics di.*.*.*.0.0.
+.db. de bi.*.*.*.0.0.
+.dc. de ci.*.*.*.0.0.
+.dd. de e.*.*.*.0.0.
+.df. de effe.*.*.*.0.0.
+.dg. de gi.*.*.*.0.0.
+.dh. de acca.*.*.*.0.0.
+.dj. de gei.*.*.*.0.0.
+.dk. de cappa.*.*.*.0.0.
+.dl. de elle.*.*.*.0.0.
+.dm. de emme.*.*.*.0.0.
+.dn. de enne.*.*.*.0.0.
+.do. de o.*.*.*.0.0.
+.dp. de pi.*.*.*.0.0.
+.dq. de qu.*.*.*.0.0.
+.dr. de erre.*.*.*.0.0.
+.ds. de esse.*.*.*.0.0.
+.dt. de ti.*.*.*.0.0.
+.du. de u.*.*.*.0.0.
+.dv. de vu.*.*.*.0.0.
+.dwdx.de w de ics.*.*.*.0.0.
+.dwdy.de w de ipsilon.*.*.*.0.0.
+.dwdz.de w de zeta.*.*.*.0.0.
+.dx. de ics.*.*.*.0.0.
+.dxdw.de ics de dabliu.*.*.*.0.0.
+.dxdy.de ics de ipsilon.*.*.*.0.0.
+.dxdz.de ics de zeta.*.*.*.0.0.
+.dy. de ipsilon.*.*.*.0.0.
+.dydw.de ipsilon de w.*.*.*.0.0.
+.dydx.de ipsilon de ics.*.*.*.0.0.
+.dydz.de ipsilon de zeta.*.*.*.0.0.
+.dz. de zeta.*.*.*.0.0.
+.dzdw.de z de w.*.*.*.0.0.
+.dzdx.de z de x.*.*.*.0.0.
+.dzdy.de z de ipsoln.*.*.*.0.0.
+.e ^x.e alla x.*.*.*.0.0.
+.e ^{x}.e alla x.*.*.*.0.0.
+.e^ x.e alla x.*.*.*.0.0.
+.e^ {x}.e alla x.*.*.*.0.0.
+.e^x.e alla x.*.*.*.0.0.
+.e^{x}.e alla x.*.*.*.0.0.
+.f'(x).effe primo di ics.*.*.*.0.0.
+.f(x).effe di ics.*.*.*.0.0.
+.g'(x).gi primo di ics.*.*.*.0.0.
+.g(x).gi di ics.*.*.*.0.0.
+.g\left( x\right).g di x.*.*.*.0.0.
+.jyjhgjgjhg.lkjljlj.*.*.*.0.0.
+.Leftrightarrow.Equivalente a.*.*.*.0.0.
+.Longeftrightarrow.Equivalente a.*.*.*.0.0.
+.n!.enne fattoriale.*.*.*.0.0.
+.(n-1)!.aperta parentesi tonda enne meno uno chiusa parentesi tonda fattoriale .*.*.*.0.0.
+.pippo.integrale definito    inizio limite inferiore aperta parentesi graffa.*.*.*.0.0.
+,Spelling and Grammar: English (U.S.),Spell Check,*,*,*,0,0,
+.Spelling and Grammar: English (United States).Spell Check.*.*.*.0.0.
+.|.sbarra.*.*.*.0.0.
+.||.doppia sbarra.*.*.*.0.0.
+.\133.punto punto punto.*.*.*.0.0.
+.\150.en dash.*.*.*.0.0.
+.\151.em dash.*.*.*.0.0.
+.\153.marchio registrato.*.*.*.0.0.
+.\164.fine cella.*.*.*.0.0.
+.\168.elenco puntato.*.*.*.0.0.
+.\169.copy right.*.*.*.0.0.
+.\172.trattino opzionale.*.*.*.0.0.
+.\174.registrato.*.*.*.0.0.
+.\175.fine.*.*.*.0.0.
+.\182.marcatore paragrafo.*.*.*.0.0.
+.\183.marcatore spazi.*.*.*.0.0.
+.\188.un quarto.*.*.*.0.0.
+.\190.tre quarti.*.*.*.0.0.
+.…….punto punto punto.*.*.*.0.0.
+.……….punto punto punto.*.*.*.0.0.
+.………….punto punto punto.*.*.*.0.0.
+.…………….punto punto punto.*.*.*.0.0.
+.……………….punto punto punto.*.*.*.0.0.
+.………………….punto punto punto.*.*.*.0.0.
+.…………………….punto punto punto.*.*.*.0.0.
+.……………………….punto punto punto.*.*.*.0.0.
+.………………………….punto punto punto.*.*.*.0.0.
+.…………………………….punto punto punto.*.*.*.0.0.
+.……………………………….punto punto punto.*.*.*.0.0.
+.………………………………….punto punto punto.*.*.*.0.0.
+.…………………………………….punto punto punto.*.*.*.0.0.
+.……………………………………….punto punto punto.*.*.*.0.0.
+.………………………………………….punto punto punto.*.*.*.0.0.
+.…………………………………………….punto punto punto.*.*.*.0.0.
+.……………………………………………….punto punto punto.*.*.*.0.0.
+.………………………………………………….punto punto punto.*.*.*.0.0.
+.…………………………………………………….punto punto punto.*.*.*.0.0.
