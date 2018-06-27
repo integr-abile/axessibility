@@ -1,14 +1,25 @@
+import argparse
 import os.path
 import re
-import sys
+import subprocess
 
 import ply.lex
 from flatex import expand_file
 
-# Input file, from terminal
-input_file = sys.argv[1]
-output_file = sys.argv[2]
-FOLDER_PATH = os.path.abspath(os.path.join(os.path.abspath(input_file), os.pardir))
+parser = argparse.ArgumentParser(description='This method takes as inputs ')
+
+parser.add_argument('-i', dest='input',
+                    help='Input File')
+
+parser.add_argument('-o', dest='output', help='Input File')
+
+parser.add_argument('-p', dest='pdflatex', action='store_const',
+                    const=True, default=False,
+                    help='If selected, runs pdflatex at the end')
+
+args = parser.parse_args()
+
+FOLDER_PATH = os.path.abspath(os.path.join(os.path.abspath(args.input), os.pardir))
 MACRO_FILE = os.path.join(FOLDER_PATH, "user_macro.sty")
 TEMP_FILE_PRE_EXPANSION = os.path.join(FOLDER_PATH, "temp_pre.tex")
 
@@ -341,7 +352,7 @@ def recursive_expansion(lin, available_regexp):
 # Begin of actual methods
 
 
-with open(input_file, 'r') as i:
+with open(args.input, 'r') as i:
     line = strip_comments(i.read())
     gather_macro(line)
 
@@ -352,7 +363,7 @@ if os.path.exists(MACRO_FILE):
         line = strip_comments(i.read())
         gather_macro(line)
 
-with open(input_file, 'r') as i:
+with open(args.input, 'r') as i:
     line = strip_comments(i.read())
     remove_macro(line, TEMP_FILE_PRE_EXPANSION)
 current_path = os.path.split(TEMP_FILE_PRE_EXPANSION)[0]
@@ -360,4 +371,12 @@ current_path = os.path.split(TEMP_FILE_PRE_EXPANSION)[0]
 final_text_to_expand = strip_comments(''.join(expand_file(TEMP_FILE_PRE_EXPANSION, current_path, True, False)))
 
 os.remove(TEMP_FILE_PRE_EXPANSION)
-remove_macro(final_text_to_expand, output_file)
+remove_macro(final_text_to_expand, TEMP_FILE_PRE_EXPANSION)
+if args.pdflatex:
+    p = subprocess.Popen(
+        ["perl", "../Perl/AxessibilityPreprocesspdfLatex.pl", "-o", TEMP_FILE_PRE_EXPANSION, args.output])
+else:
+    p = subprocess.Popen(
+        ["perl", "../Perl/AxessibilityPreprocess.pl", "-o", TEMP_FILE_PRE_EXPANSION, args.output])
+p.communicate()
+os.remove(TEMP_FILE_PRE_EXPANSION)

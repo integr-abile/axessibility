@@ -299,7 +299,7 @@
 \immediate \pdfobj useobjnum\theTextObjNum{<</Type /StructElem %
 /P \ParentElem \space 0 R %
 /C /Normal %
-/K [\TextArray] %
+/K \TextArray %
 /S /\TextType %
 \space\LanguageCode>>}%
 \pdfrefobj \theTextObjNum%
@@ -344,9 +344,6 @@
 \immediate \pdfobj useobjnum\theTextObjNum{<</Type /StructElem %
 /P \ParentElem \space 0 R %
 /C /Normal %
-\ifx \TextType\Formula\relax
-/Alt (\detokenize{\sqrt{4}}) %
-\fi %
 /K [\TextArray] %
 /S /\TextType %
 \space\LanguageCode %
