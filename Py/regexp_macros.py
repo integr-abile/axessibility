@@ -1,11 +1,18 @@
+import os.path
 import re
 import sys
 
 import ply.lex
-import ply.lex
+from flatex import expand_file
 
 # Input file, from terminal
 input_file = sys.argv[1]
+output_file = sys.argv[2]
+FOLDER_PATH = os.path.abspath(os.path.join(os.path.abspath(input_file), os.pardir))
+MACRO_FILE = os.path.join(FOLDER_PATH, "user_macro.sty")
+TEMP_FILE_PRE_EXPANSION = os.path.join(FOLDER_PATH, "temp_pre.tex")
+
+
 
 # Usage
 # python stripcomments.py input.tex > output.tex
@@ -24,6 +31,26 @@ input_file = sys.argv[1]
 #    while preserve the "\n" at the end of the line. 
 #    That is because remove the % some time will result in
 #    compilation failure.
+
+def printProgressBar(iteration, total, prefix='', suffix='', decimals=1, length=100, fill='█'):
+    """
+    Call in a loop to create terminal progress bar
+    @params:
+        iteration   - Required  : current iteration (Int)
+        total       - Required  : total iterations (Int)
+        prefix      - Optional  : prefix string (Str)
+        suffix      - Optional  : suffix string (Str)
+        decimals    - Optional  : positive number of decimals in percent complete (Int)
+        length      - Optional  : character length of bar (Int)
+        fill        - Optional  : bar fill character (Str)
+    """
+    percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+    filledLength = int(length * iteration // total)
+    bar = fill * filledLength + '-' * (length - filledLength)
+    print('\r%s |%s| %s%% %s' % (prefix, bar, percent, suffix), end='\r')
+    # Print New Line on Complete
+    if iteration == total:
+        print()
 
 
 def strip_comments(source):
@@ -172,56 +199,93 @@ def strip_comments(source):
 START_PATTERN = 'egin{document}'
 END_PATTERN = 'nd{document}'
 
+MACRO_DICTIONARY = []
 
-def remove_macro(strz):
+
+def gather_macro(strz):
     """
         This method searches for defs, newcommands, edef, gdef,xdef, DeclareMathOperators and renewcommand 
         and gets the macro structure out of it. Number 
     """
 
-    str_no_comments = strip_comments(strz)
     subs_regexp = []
-    list_regexp = []
     # You can manually specify the number of replacements by changing the 4th argument
     should_parse = True
-    final_doc = []
-    for line in str_no_comments.split('\n'):
+    # parse preamble
+    for i, LINE in enumerate(strz.split('\n')):
+        printProgressBar(i + 1, len(strz.split('\n')), suffix="gather Macros")
         if should_parse:
-            if re.search(START_PATTERN, line):
+            if re.search(START_PATTERN, LINE):
                 should_parse = False
-                for reg in list_regexp:
-                    expanded_regexp = build_subs_regexp(reg)
-                    if expanded_regexp:
-                        subs_regexp.append(expanded_regexp)
-
             else:
-                result = parse_macro_structure(line)
+                result = parse_macro_structure(LINE)
                 if result:
-                    list_regexp.append(result)
+                    # print(result,line)
+                    MACRO_DICTIONARY.append(result)
         else:
-            if re.search(END_PATTERN, line):
-                final_doc.append(line)
+            if re.search(END_PATTERN, LINE):
+                break
+            else:
+                pass
+
+
+def get_expanded_macro():
+    subs_regexp = []
+    for reg in MACRO_DICTIONARY:
+        expanded_regexp = build_subs_regexp(reg)
+        if expanded_regexp:
+            subs_regexp.append(expanded_regexp)
+    return subs_regexp
+
+
+def remove_macro(st, o_file):
+    subs_regexp = get_expanded_macro()
+    should_substitute = False
+    final_doc = []
+    for i, LINE in enumerate(st.split('\n')):
+        printProgressBar(i + 1, len(st.split('\n')), suffix="remove macros")
+        if should_substitute:
+            if re.search(END_PATTERN, LINE):
+                final_doc.append(LINE)
                 break
             else:
                 # Perform substitutions
-                line = recursive_expansion(line, subs_regexp)
-        final_doc.append(line)
+                try:
+                    LINE = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\xff]', '', recursive_expansion(LINE, subs_regexp))
+                except Exception as e:
+                    print(e)
+                    print(LINE)
+                    break
 
-    # print(subs_regexp)
-    print('\n'.join(final_doc))
+        else:
+            if re.search(START_PATTERN, LINE):
+                should_substitute = True
+            else:
+                pass
+        if not LINE.isspace():
+            final_doc.append(LINE)
+    with open(o_file, 'w') as o:
+        for final_line in final_doc:
+            if final_line.rstrip():
+                o.write(final_line + '\n')
 
 
-def parse_macro_structure(line):
-    regexp = r"\\(.*command|DeclareMathOperator|def|edef|xdef|gdef)({|)(\\[a-zA-Z]+)(}|)(\[([0-9])\]|){(.*(?=\}))\}.*$"
-    result = re.search(regexp, line)
+def parse_macro_structure(ln):
+    """
+    :param ln: a text line
+    :return: structure (see below) of the macro inside the line (if any)
+    """
+    regexp = r"\\(.*command|DeclareMathOperator|def|edef|xdef|gdef)({|)(\\[a-zA-Z]+)(}|)(\[([0-9])\]|| +){(.*(?=\}))\}.*$"
+    result = re.search(regexp, ln)
     if result:
+        regex = r"\\([[:blank:]]|)(?![a-zA-Z])"
         macro_structure = {
             'command_type': result.group(1),
             'macro_name': result.group(3),
             'separator_open': result.group(2),
             'separator_close': result.group(4),
             'number_of_inputs': result.group(6),
-            'raw_replacement': result.group(7),
+            'raw_replacement': re.sub(regex, '', result.group(7)),
         }
         return macro_structure
     else:
@@ -238,33 +302,62 @@ def build_subs_regexp(reg):
     """
     if re.search('declare', reg["command_type"]):
 
-        print()
+        pass
     else:
         if not reg["number_of_inputs"]:
             # The macro has no inputs
             return {'sub': reg["raw_replacement"], 'reg': '\\' + reg["macro_name"] + '(?![a-zA-Z])', }
         else:
             # The macro has one or more inputs
-            print()
+            pass
 
 
-def recursive_expansion(line, available_regexp):
+def recursive_expansion(lin, available_regexp):
     for subs in available_regexp:
-        if not (re.search(subs["reg"], line)):
-            # print(line,'does not match',subs["reg"])
+        if not (re.search(subs["reg"], lin)):
+            # print(lin,'does not match',subs["reg"])
             continue
         else:
-            # print(line,'does not match',subs["reg"])
-            line = re.sub(subs["reg"], subs["sub"], line)
-        # print('after: '+line)
+            # print(lin,'does not match',subs["reg"])
+            try:
+                lin = re.sub(subs["reg"], re.sub(r'([\" \' \\\ ])', r'\\\1', subs["sub"]), lin)
+            except Exception as e:
+                print(e)
+                print(lin)
+                # try:
+                #   lin = re.sub(subs["reg"], re.escape(subs["sub"]), lin)
+                # except Exception as e:
+                #   print(e)
+
+        # print('after: '+lin)
     for subs in available_regexp:
-        if not (not (re.search(subs["reg"], line))):
-            return recursive_expansion(line, available_regexp)
+        if not (not (re.search(subs["reg"], lin))):
+            return recursive_expansion(lin, available_regexp)
         else:
             continue
-    return line
+    return lin
+
+
+# Begin of actual methods
 
 
 with open(input_file, 'r') as i:
-    line = i.read()
-    remove_macro(line)
+    line = strip_comments(i.read())
+    gather_macro(line)
+
+print(MACRO_FILE, os.path.exists(MACRO_FILE))
+if os.path.exists(MACRO_FILE):
+    print('is file!')
+    with open(MACRO_FILE, 'r') as i:
+        line = strip_comments(i.read())
+        gather_macro(line)
+
+with open(input_file, 'r') as i:
+    line = strip_comments(i.read())
+    remove_macro(line, TEMP_FILE_PRE_EXPANSION)
+current_path = os.path.split(TEMP_FILE_PRE_EXPANSION)[0]
+
+final_text_to_expand = strip_comments(''.join(expand_file(TEMP_FILE_PRE_EXPANSION, current_path, True, False)))
+
+os.remove(TEMP_FILE_PRE_EXPANSION)
+remove_macro(final_text_to_expand, output_file)
