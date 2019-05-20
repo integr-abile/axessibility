@@ -65,15 +65,6 @@
 
 \newcommand{\auxiliaryspace}{ }
 
-
-\makeatletter
-\long\def\wrap#1{
-\BeginAccSupp{method=escape,ActualText=\detokenize\expandafter{#1}}
- #1
-\EndAccSupp{}%
-}
-\makeatother
-
 \makeatletter
 \long\def\wrapnew#1{
 \tagstructbegin{tag=P,alttext-o=\detokenize\expandafter{#1},actualtext-o=\detokenize\expandafter{#1}}
