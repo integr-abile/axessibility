@@ -1,18 +1,43 @@
-%%
-%% Author: micheleberra
-%% 27/06/18
-%%
+\documentclass{article}
+%\usepackage{amsmath,etoolbox,environ}
+\usepackage{amsmath,etoolbox,axessibility}
 
-% Preamble
-\documentclass[11pt]{article}
+\pdfcompresslevel=0% Damit wird die PDF-Quelldatei lesbar
+\pdfoptionpdfminorversion=6
 
-% Packages
-\usepackage{a4wide}
-\usepackage{../sty/axessibility}
-% Document
+\usepackage[latin1]{inputenc}
+\usepackage{amssymb}
+
+\title{Test di formule displayed\\con axessibility2.0\&tagpdf}
+\author{Sandro}
+
+\date{}
+
+\makeatletter
+
+%standard displayed equation 
+
+
 \begin{document}
+\pagestyle{empty}
 
-    \section{Sezione}
-    testo
-    \[\frac{1}{2}\]
-\end{document}
+\tagstructbegin{tag=Document}
+
+
+
+\maketitle
+
+%\(1+1=2\)
+
+one centered formula, without label (equation*, accessible?):
+\begin{equation*}
+\frac{a x^2}{b x} = 0
+\end{equation*}
+
+one centered formula, with label (equation, accessible?):
+\begin{equation}
+a x^2 + b x + 2 c = 0
+\end{equation}
+
+\tagstructend
+\end{document} 
