@@ -84,10 +84,10 @@ pdf.setminorversion(0)
 
 
 \makeatletter
-\let\textdocument=\document
-\let\endtextdocument=\enddocument
-\renewcommand{\document}{\textdocument\tagstructbegin{tag=Document}}
-\renewcommand{\enddocument}{\tagstructend\endtextdocument}
+\let\begin@document=\document
+\let\end@document=\enddocument
+\renewcommand{\document}{\begin@document\tagstructbegin{tag=Document}}
+\renewcommand{\enddocument}{\tagstructend\end@document}
 \renewenvironment{equation}{%
  \incr@eqnum
   \mathdisplay@push
