@@ -29,10 +29,10 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{axessibility}
 \RequirePackage{tagpdf}
-
-\tagpdfsetup{tabsorder=structure,uncompress,activate-all}
+\tagpdfsetup{tabsorder=structure,uncompress,activate-all,interwordspace=true}
 \tagpdfifpdftexT
  {
+\pdfcompresslevel=0
   %set language / can also be done with hyperref
   \pdfcatalog{/Lang (en-US)}
   \usepackage[T1]{fontenc}
@@ -44,29 +44,23 @@
  {
   %set language / can also be done with hyperref
   \pdfextension catalog{/Lang (en-US)}
-  \usepackage{fontspec}
-  \usepackage{unicode-math}
-  \usepackage{luacode}
+  \RequirePackage{fontspec}
+  \RequirePackage{luacode}
   \newfontface\zerowidthfont{freeserif}
- }
-
+\directlua{
+pdf.setcompresslevel(0)
+pdf.setmajorversion(2)
+pdf.setminorversion(0)
+}
+}
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{xstring}
-
-\pdfcompresslevel=0
-\pdfoptionpdfminorversion=6
-\input{glyphtounicode}
-\pdfgentounicode=1
-
 \newtoks\@mltext
 \newtoks\@mltexttmp
-
-
 \newcommand{\auxiliaryspace}{ }
 
-\makeatletter
-\long\def\wrapnew#1{
+\makeatletter\long\def\wrapnew#1{
 \tagstructbegin{tag=P,alttext-o=\detokenize\expandafter{#1},actualtext-o=\detokenize\expandafter{#1}}
  \tagmcbegin{tag=P,alttext-o=\detokenize\expandafter{#1},actualtext-o=\detokenize\expandafter{#1}}
  #1
@@ -90,6 +84,10 @@
 
 
 \makeatletter
+\let\begin@document=\document
+\let\end@document=\enddocument
+\renewcommand{\document}{\begin@document\tagstructbegin{tag=Document}}
+\renewcommand{\enddocument}{\tagstructend\end@document}
 \renewenvironment{equation}{%
  \incr@eqnum
   \mathdisplay@push
@@ -123,7 +121,7 @@
 \makeatletter
 \newenvironment{tempenv}{%
   \relax\ifmmode\@badmath\else$\fi%
- \collect@body\wrap}{%
+ \collect@body\wrapnew}{%
   \relax\ifmmode\ifinner$\else\@badmath\fi\else \@badmath\fi}
 \protected\def\(#1\){\begin{tempenv}#1\end{tempenv}}
 \makeatother
