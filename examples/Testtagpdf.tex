@@ -1,0 +1,205 @@
+\documentclass{article}
+%\usepackage{amsmath,etoolbox,environ}
+\usepackage{etoolbox,axessibility}
+
+\title{Test di formule displayed\\con axessibility2.0\&tagpdf}
+\author{Sandro\&Dragan}
+
+\date{}
+
+
+\begin{document}
+\pagestyle{empty}
+
+
+
+\maketitle
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+One inline formula (accessible and tagged?)
+  \tagmcend
+\tagstructend
+ \( x= - \frac{b}{a} \) \\
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+Another inline formula (\verb|$ ... $|, not accessible and tagged?)
+  \tagmcend
+\tagstructend
+$3 + 3 = 6$ \\ 
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+one centered formula, without label (equation*, accessible and tagged?):
+  \tagmcend
+\tagstructend
+\begin{equation*}
+a x^2 + b x + 1 c = 0
+\end{equation*}
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+one centered formula, without label (\verb|$$ ... $$|, not accessible and tagged?):
+  \tagmcend
+\tagstructend
+$$
+4a x^2 +3 b x + 2 c = 0
+$$
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+one centered formula, with label (equation, accessible and tagged?):
+  \tagmcend
+\tagstructend
+\begin{equation}
+x=\frac{3a^2}{n+m}
+\end{equation}
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+several formulas, aligned, with label (alignat, accessible and tagged?):
+  \tagmcend
+\tagstructend
+\begin{alignat}{2}
+10xy^2+15x^2y-5xy7 & =  5\left(2xy^2+3x^2y-xy7\right) = \\
+   & = 5x\left(2y^2+3xy-y7\right) = \\
+   & = 5xy\left(2y+3x-7\right)
+\end{alignat}
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+several formulas, aligned, without label (alignat*, accessible and tagged?):
+  \tagmcend
+\tagstructend
+\begin{alignat*}{2}
+20xy^2+30x^2y-10xy7 & =  10\left(2xy^2+3x^2y-xy7\right) = \\
+   & = 10x\left(2y^2+3xy-y7\right) = \\
+   & = 10xy\left(2y+3x-7\right)
+\end{alignat*}
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+several formulas, aligned, with label (xalignat, accessible and tagged?):
+  \tagmcend
+\tagstructend
+\begin{xalignat}{2}
+30xy^2+45x^2y-15xy7 & =  15\left(2xy^2+3x^2y-xy7\right) = \\
+   & = 15x\left(2y^2+3xy-y7\right) = \\
+   & = 15xy\left(2y+3x-7\right)
+\end{xalignat}
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+several formulas, aligned, without label (xalignat*, accessible and tagged?):
+  \tagmcend
+\tagstructend
+\begin{xalignat*}{2}
+40xy^2+60x^2y-20xy7 & =  20\left(2xy^2+3x^2y-xy7\right) = \\
+   & = 20x\left(2y^2+3xy-y7\right) = \\
+   & = 20xy\left(2y+3x-7\right)
+\end{xalignat*}
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+several formulas, aligned, without label (xxalignat, accessible and tagged?):
+  \tagmcend
+\tagstructend
+\begin{xxalignat}{1}
+50xy^2+75x^2y-25xy7 & =  25\left(2xy^2+3x^2y-xy7\right) = \\
+   & = 25x\left(2y^2+3xy-y7\right) = \\
+   & = 25xy\left(2y+3x-7\right)
+\end{xxalignat}
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+several formulas, aligned, with label (align, accessible and tagged?):
+  \tagmcend
+\tagstructend
+\begin{align}
+60xy^2+90x^2y-30xy7 & =  30\left(2xy^2+3x^2y-xy7\right) = \\
+   & = 30x\left(2y^2+3xy-y7\right) = \\
+   & = 30xy\left(2y+3x-7\right)
+\end{align}
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+several formulas, aligned, without label (align*, accessible and tagged?):
+  \tagmcend
+\tagstructend
+\begin{align*}
+70xy^2+105x^2y-35xy7 & =  35\left(2xy^2+3x^2y-xy7\right) = \\
+   & = 20x\left(2y^2+3xy-y7\right) = \\
+   & = 20xy\left(2y+3x-7\right)
+\end{align*}
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+several formulas, aligned, with label (flalign, accessible and tagged?):
+  \tagmcend
+\tagstructend
+\begin{flalign}
+80xy^2+120x^2y-40xy7 & =  40\left(2xy^2+3x^2y-xy7\right) = \\
+   & = 40x\left(2y^2+3xy-y7\right) = \\
+   & = 40xy\left(2y+3x-7\right)
+\end{flalign}
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+several formulas, aligned, without label (flalign*, accessible and tagged?):
+  \tagmcend
+\tagstructend
+\begin{flalign*}
+90xy^2+135x^2y-45xy7 & =  45\left(2xy^2+3x^2y-xy7\right) = \\
+   & = 45x\left(2y^2+3xy-y7\right) = \\
+   & = 45xy\left(2y+3x-7\right)
+\end{flalign*}
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+several formulas, aligned, with label (gather, accessible and tagged?):
+  \tagmcend
+\tagstructend
+\begin{gather}
+100xy^2+150x^2y-50xy7 =  50\left(2xy^2+3x^2y-xy7\right) = \\
+    = 50x\left(2y^2+3xy-y7\right) = \\
+    = 50xy\left(2y+3x-7\right)
+\end{gather}
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+several formulas, aligned, without label (gather*, accessible and tagged?):
+  \tagmcend
+\tagstructend
+\begin{gather*}
+110xy^2+165x^2y-55xy7  =  55\left(2xy^2+3x^2y-xy7\right) = \\
+    = 55x\left(2y^2+3xy-y7\right) = \\
+    = 55xy\left(2y+3x-7\right)
+\end{gather*}
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+several formulas, aligned, with label (multline, accessible and tagged?):
+  \tagmcend
+\tagstructend
+\begin{multline}
+120xy^2+180x^2y-60xy7 =\\
+    =  60\left(2xy^2+3x^2y-xy7\right) = \\
+    = 50x\left(2y^2+3xy-y7\right) = \\
+    = 50xy\left(2y+3x-7\right)
+\end{multline}
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+several formulas, aligned, without label (multline*, accessible and tagged?):
+  \tagmcend
+\tagstructend
+\begin{multline*}
+130xy^2+195x^2y-65xy7  =\\
+     =  65\left(2xy^2+3x^2y-xy7\right) = \\
+    = 55x\left(2y^2+3xy-y7\right) = \\
+    = 55xy\left(2y+3x-7\right)
+\end{multline*}
+
+
+\end{document} 
