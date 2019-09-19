@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{axessibility}
+\setmainfont{Times New Roman}
+\pagestyle{empty}
+\newcommand{\test}[2]{#1+1=#2-1}
+\begin{document}
+test
+\doreplacement{true}
+\[1-1=0\]
+$$a+b=a^b$$ $a-b=a/b$
+\$$$a^b
+=0\$$$
+$
+a=\sqrt{c^2-b^2}
+$
+\\$$\alpha+\beta=1
+\\$$ \\$\alpha-\beta=0$ $$a-1=b\\$$
+%$a$
+$$b$$ %\\$-a\\$
+%
+test \$$a^2-b^2=(a+b)*(a-b)\$$
+\doreplacement{false}
+$\gamma+\beta=1$
+%this formula is probably inaccessible for screenreaders,at least nvda ignore it,because we switch off preprocessing,but after this formula a new formula must be accessible,because we switch on preprocessing again
+\doreplacement{true}
+\\$\gamma-\beta=0$
+%testing _ character and macrocommands
+$$\int\limits_a^b f(x)dx$$ $\test{1}{3}$ \\\$$a/b-1/b=0\\\$$
+\end{document}
