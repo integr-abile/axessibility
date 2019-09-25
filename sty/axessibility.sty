@@ -69,15 +69,14 @@ require("axessibility.lua")
 %\everypar{\directlua{checkpar() in_par=true}\tagstructbegin{tag=P}\tagmcbegin{tag=P}}
 }
 \renewcommand{\enddocument}{
-%\directlua{checkpar() in_par=false}
 \tagstructend
 \end@document}
 %switch on or switch off $$ and $ replacement and replacement of empty lines if $$ or $ opened and if first argument of command is true. this command works only in luatex/lualatex
 \makeatother
-\newcommand{\doreplacement}[2][false]{
+\newcommand{\doreplacement}[1]{
 \ifluatex
 \directlua{
-replace_dls_and_double_dls(#2,#1)
+replace_dls_and_double_dls(#1)
 }
 \fi
 }
@@ -93,7 +92,6 @@ replace_dls_and_double_dls(#2,#1)
 
 \makeatletter
 \long\def\wrap#1{
-%\directlua{checkpar() in_par=false}
 \tagstructbegin{tag=P,alttext-o=\detokenize\expandafter{#1},actualtext-o=\detokenize\expandafter{#1}}
  \tagmcbegin{tag=P,alttext-o=\detokenize\expandafter{#1},actualtext-o=\detokenize\expandafter{#1}}
  #1
@@ -137,7 +135,6 @@ replace_dls_and_double_dls(#2,#1)
 \long\def\wrapml#1{
 \def\@mltext{\detokenize\expandafter{#1}}
 \def\@mltexttmp{}
-%\directlua{checkpar() in_par=false}
 \StrBehind[6]{\@mltext}{ }[\@mltexttmp]
 \StrGobbleRight{\@mltexttmp}{1}[\@mltext]
 \tagstructbegin{tag=P,alttext-o=\detokenize\expandafter{\@mltext},actualtext-o=\detokenize\expandafter{\@mltext}}
@@ -152,7 +149,6 @@ replace_dls_and_double_dls(#2,#1)
 \def\@mltexttmp{}
 \StrBehind[5]{\@mltext}{ }[\@mltexttmp]
 \StrGobbleRight{\@mltexttmp}{1}[\@mltext]
-%\directlua{checkpar() in_par=false}
 \tagstructbegin{tag=P,alttext-o=\detokenize\expandafter{\@mltext},actualtext-o=\detokenize\expandafter{\@mltext}}
  \tagmcbegin{tag=P,alttext-o=\detokenize\expandafter{\@mltext},actualtext-o=\detokenize\expandafter{\@mltext}}
  #1
@@ -208,7 +204,6 @@ replace_dls_and_double_dls(#2,#1)
     $$%
   \fi
   \ignorespacesafterend
-%\directlua{checkpar() in_par=false}
   \tagmcend
   \tagstructend
 }
@@ -240,7 +235,6 @@ replace_dls_and_double_dls(#2,#1)
 }{%
   \math@cr \black@\totwidth@ \egroup
   $$\ignorespacesafterend
-%\directlua{checkpar() in_par=false}
   \tagmcend
   \tagstructend
 }
@@ -258,7 +252,6 @@ replace_dls_and_double_dls(#2,#1)
 }{%
   \iftagsleft@ \@xp\lendmultline@ \else \@xp\rendmultline@ \fi
   \ignorespacesafterend
-%\directlua{checkpar() in_par=false}
   \tagmcend
   \tagstructend
 }
