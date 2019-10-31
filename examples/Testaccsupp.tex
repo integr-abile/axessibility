@@ -1,0 +1,198 @@
+\documentclass{article}
+%\usepackage{amsmath,etoolbox,environ}
+\usepackage[accsupp]{axessibility}
+%\usepackage{eqnalign}
+
+%it happends conflicts with lualatex
+%\usepackage[latin1]{inputenc}
+
+\title{test with axessibility 2.0 - accsupp}
+\author{Sandro}
+
+\date{}
+
+\makeatletter
+
+%standard displayed equation 
+
+
+\begin{document}
+
+\maketitle
+
+%\messaggio %debug
+
+\bigskip
+\(
+1
++
+1
+=
+2
+\)
+
+one centered formula, without label (equation*, accessible?):
+\begin{equation*}
+a x^2 + b x + 1 c = 0
+\end{equation*}
+
+one centered formula, with label (equation, accessible?):
+\begin{equation}
+a x^2 + b x + 2 c = 0
+\end{equation}
+
+several centered formulas, one label for all of them (equation+gathered, accessible?):
+\begin{equation}
+\begin{gathered}
+a x + b = 0 \\
+a x^2 + b x + 4 c = 0 \\
+a x^3 + b x^2 + c x + d = 0
+\end{gathered}
+\end{equation}
+ 
+
+
+several centered formulas, each with its own label (gather, accessible?)
+\begin{gather}
+a x + 2 b = 0 \\
+a x^2 + b x + 5 c = 0 \\
+a x^3 + b x^2 + c x + d = 0
+\end{gather}
+
+several centered formulas, without label (gather*, accessible?):
+\begin{gather*}
+a x + b = 0 \\
+a x^2 + b x + 3 c = 0 \\
+a x^3 + b x^2 + c x + d = 0
+\end{gather*}
+
+several formulas, any alignment, each with its own label (flalign, accessible?):
+\begin{flalign}
+10xy^2+15x^2y-5xy6 & =  5\left(2xy^2+3x^2y-xy6\right) = \\
+   & = 5x\left(2y^2+3xy-y6\right) = \\
+   & = 5xy\left(2y+3x-6\right)
+\end{flalign}
+
+several formulas, any alignment, without label (flalign*, accessible?):
+\begin{flalign*}
+10xy^2+15x^2y-5xy7 & =  5\left(2xy^2+3x^2y-xy7\right) = \\
+   & = 5x\left(2y^2+3xy-y7\right) = \\
+   & = 5xy\left(2y+3x-7\right)
+\end{flalign*}
+
+several formulas, any alignment, each with its own label (xalignat, accessible?):
+\begin{xalignat}{2}
+10xy^2+15x^2y-5xy8 & =  5\left(2xy^2+3x^2y-xy8\right) = \\
+   & = 5x\left(2y^2+3xy-y8\right) = \\
+   & = 5xy\left(2y+3x-8\right)
+\end{xalignat}
+
+several formulas, any alignment, without label (xalignat*, accessible?):
+\begin{xalignat*}{2}
+10xy^2+15x^2y-5xy9 & =  5\left(2xy^2+3x^2y-xy9\right) = \\
+   & = 5x\left(2y^2+3xy-y9\right) = \\
+   & = 5xy\left(2y+3x-9\right)
+\end{xalignat*}
+
+several formulas, any alignment, each with its own label (xxalignat, accessible?):
+\begin{xxalignat}{1}
+10xy^2+15x^2y-5xy10 & =  5\left(2xy^2+3x^2y-xy10\right) = \\
+   & = 5x\left(2y^2+3xy-y10\right) = \\
+   & = 5xy\left(2y+3x-10\right)
+\end{xxalignat}
+
+several formulas, each with its own label (eqnarray, accessible?)
+\begin{eqnarray}
+\label{x1}
+10xy^2+15x^2y-5xy11 & =  & 5\left(2xy^2+3x^2y-xy11\right) = \\
+\nonumber
+   & = & 5x\left(2y^2+3xy-y11\right) = \\
+   \label{x2}
+   & = & 5xy\left(2y+3x-11\right)
+\end{eqnarray}
+
+several formulas, each without label (eqnarray*, accessible?)
+\begin{eqnarray*}
+10xy^2+15x^2y-5xy12 & =  & 5\left(2xy^2+3x^2y-xy12\right) = \\
+   & = & 5x\left(2y^2+3xy-y12\right) = \\
+   & = & 5xy\left(2y+3x-12\right)
+\end{eqnarray*}
+
+Test label di eqnarray: \eqref{x1} and \eqref{x2} (eqref looks to be working ...)\\
+
+
+several formulas, aligned, with label (align, accessible?):
+%
+\begin{align}
+60xy^2+90x^2y-30xy7 & =  30\left(2xy^2+3x^2y-xy7\right) = \\
+   & = 30x\left(2y^2+3xy-y7\right) = \\
+   & = 30xy\left(2y+3x-7\right)
+\end{align}
+
+
+several formulas, aligned, without label (align*, accessible?):
+%
+\begin{align*}
+70xy^2+105x^2y-35xy7 & =  35\left(2xy^2+3x^2y-xy7\right) = \\
+   & = 20x\left(2y^2+3xy-y7\right) = \\
+   & = 20xy\left(2y+3x-7\right)
+\end{align*}
+
+
+several formulas, aligned, with label (flalign, accessible?):
+%
+\begin{flalign}
+80xy^2+120x^2y-40xy7 & =  40\left(2xy^2+3x^2y-xy7\right) = \\
+   & = 40x\left(2y^2+3xy-y7\right) = \\
+   & = 40xy\left(2y+3x-7\right)
+\end{flalign}
+
+
+several formulas, aligned, without label (flalign*, accessible?):
+%
+\begin{flalign*}
+90xy^2+135x^2y-45xy7 & =  45\left(2xy^2+3x^2y-xy7\right) = \\
+   & = 45x\left(2y^2+3xy-y7\right) = \\
+   & = 45xy\left(2y+3x-7\right)
+\end{flalign*}
+
+
+several formulas, aligned, with label (multline, accessible?):
+%
+\begin{multline}
+120xy^2+180x^2y-60xy7 =\\
+    =  60\left(2xy^2+3x^2y-xy7\right) = \\
+    = 50x\left(2y^2+3xy-y7\right) = \\
+    = 50xy\left(2y+3x-7\right)
+\end{multline}
+
+
+several formulas, aligned, without label (multline*, accessible?):
+%
+\begin{multline*}
+130xy^2+195x^2y-65xy7  =\\
+     =  65\left(2xy^2+3x^2y-xy7\right) = \\
+    = 55x\left(2y^2+3xy-y7\right) = \\
+    = 55xy\left(2y+3x-7\right)
+\end{multline*}
+
+
+subordinate numbering (subequations+gather, accessible?):
+\begin{subequations}
+\begin{gather}
+a x + b = 0 \\
+a x^2 + b x + c = 0 \\
+a x^3 + b x^2 + c x + d = 0
+\end{gather}
+\end{subequations}
+
+boxed unnumbered formula (equation*+boxed, accessible?):
+\begin{equation*}
+\boxed{a x^2 + b x + c = 0}
+\end{equation*}
+%we need use \doreplacement command in separate line,because of lua callback.
+formula with \verb|$$| (accessible,when compile in lualatex?)
+\doreplacement{true}
+$$a+b=c$$
+\doreplacement{false}
+\end{document} 

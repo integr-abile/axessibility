@@ -1,8 +1,10 @@
 \documentclass{article}
 %\usepackage{amsmath,etoolbox,environ}
-\usepackage{etoolbox,axessibility}
+\usepackage{etoolbox}
+%\usepackage[tagpdf]{axessibility}
+\usepackage{axessibility}
 
-\title{Test di formule displayed\\con axessibility2.0\&tagpdf}
+\title{Test with  axessibility 2.0 - tagpdf}
 \author{Sandro\&Dragan}
 
 \date{}
@@ -12,9 +14,12 @@
 \pagestyle{empty}
 
 
-
 \maketitle
 
+%\messaggio %debug
+
+\bigskip
+\doreplacement{true}
 \tagstructbegin{tag=P}
   \tagmcbegin{tag=P}
 One inline formula (accessible and tagged?)
@@ -24,11 +29,11 @@ One inline formula (accessible and tagged?)
 
 \tagstructbegin{tag=P}
   \tagmcbegin{tag=P}
-Another inline formula (\verb|$ ... $|, not accessible and tagged?)
+Another inline formula (\verb|$ ... $|, accessible,when compile in lualatex and tagged?)
   \tagmcend
 \tagstructend
+\doreplacement{true}
 $3 + 3 = 6$ \\ 
-
 \tagstructbegin{tag=P}
   \tagmcbegin{tag=P}
 one centered formula, without label (equation*, accessible and tagged?):
@@ -37,16 +42,17 @@ one centered formula, without label (equation*, accessible and tagged?):
 \begin{equation*}
 a x^2 + b x + 1 c = 0
 \end{equation*}
-
+\doreplacement{false}
 \tagstructbegin{tag=P}
   \tagmcbegin{tag=P}
-one centered formula, without label (\verb|$$ ... $$|, not accessible and tagged?):
+one centered formula, without label (\verb|$$ ... $$|, accessible,when compile in lualatex and tagged?):
   \tagmcend
 \tagstructend
+\doreplacement{true}
 $$
 4a x^2 +3 b x + 2 c = 0
 $$
-
+\doreplacement{false}
 \tagstructbegin{tag=P}
   \tagmcbegin{tag=P}
 one centered formula, with label (equation, accessible and tagged?):

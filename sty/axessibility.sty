@@ -30,6 +30,56 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{axessibility}
 
+
+%% 'tagpdf' or 'accsupp' option
+\newif\iftagpdfopt
+
+\DeclareOption{accsupp}{
+  \tagpdfoptfalse
+}
+
+\DeclareOption{tagpdf}{
+  \tagpdfopttrue
+}
+
+\ExecuteOptions{tagpdf}
+
+\ProcessOptions\relax
+
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{xstring}
+
+%%%
+% to avoid errors in if constructs
+%%%
+\makeatletter
+\long\def\@macronestedifalign{
+\ifingather@
+    \restorealignstate@
+    \egroup
+    \nonumber
+    \ifnum0=`{\fi\iffalse}\fi
+  \else
+    $$%
+  \fi
+  }
+  
+\long\def\@macronestedifmultline{  
+  \iftagsleft@ \@xp\lendmultline@ \else \@xp\rendmultline@ \fi
+}
+  
+  
+\makeatother
+
+\iftagpdfopt
+%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%
+% tagpdf option code (default)   %
+%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%
+%\def\messaggio{option tagpdf} %debug
+
 \RequirePackage{tagpdf}
 \tagpdfsetup{tabsorder=structure,uncompress,activate-all,interwordspace=true}
 \tagpdfifpdftexT
@@ -53,33 +103,24 @@ require("axessibility.lua")
 }
 }
 
-\RequirePackage{amsmath}
-\RequirePackage{amssymb}
-\RequirePackage{xstring}
+\makeatletter
 
 \newtoks\@mltext
 \newtoks\@mltexttmp
 
-
-
-\makeatletter
-\let\begin@document=\document
-\let\end@document=\enddocument
-\renewcommand{\document}{\begin@document\tagstructbegin{tag=Document}
-%\everypar{\directlua{checkpar() in_par=true}\tagstructbegin{tag=P}\tagmcbegin{tag=P}}
-}
-\renewcommand{\enddocument}{
-\tagstructend
-\end@document}
 %switch on or switch off $$ and $ replacement and replacement of empty lines if $$ or $ opened and if first argument of command is true. this command works only in luatex/lualatex
-\makeatother
 \newcommand{\doreplacement}[1]{
-\ifluatex
+\tagpdfifluatexT
 \directlua{
 replace_dls_and_double_dls(#1)
 }
-\fi
 }
+\let\begin@document=\document
+\let\end@document=\enddocument
+\renewcommand{\document}{\begin@document\tagstructbegin{tag=Document}}
+\renewcommand{\enddocument}{\tagstructend\end@document}
+\makeatother
+
 \makeatletter
 \newenvironment{temp@env}{%
   \relax\ifmmode\@badmath\else$\fi%
@@ -129,9 +170,8 @@ replace_dls_and_double_dls(#1)
 \protected\def\[#1\]{\begin{equation*}#1\end{equation*}}
 \makeatother
 
-
-
 \makeatletter
+
 \long\def\wrapml#1{
 \def\@mltext{\detokenize\expandafter{#1}}
 \def\@mltexttmp{}
@@ -141,9 +181,10 @@ replace_dls_and_double_dls(#1)
  \tagmcbegin{tag=P,alttext-o=\detokenize\expandafter{\@mltext},actualtext-o=\detokenize\expandafter{\@mltext}}
  #1
 }
-\makeatother
 
-\makeatletter
+%
+% This one should be \wrapml parametrized \StrBehind[5]
+%
 \long\def\wrapmlstar#1{
 \def\@mltext{\detokenize\expandafter{#1}}
 \def\@mltexttmp{}
@@ -153,9 +194,42 @@ replace_dls_and_double_dls(#1)
  \tagmcbegin{tag=P,alttext-o=\detokenize\expandafter{\@mltext},actualtext-o=\detokenize\expandafter{\@mltext}}
  #1
 }
+
+%
+% This one should be \wrapml parametrized = \wrapmlstar
+%
+\long\def\wrapmlalt#1{
+\def\@mltext{\detokenize\expandafter{#1}}
+\def\@mltexttmp{}
+\StrBehind[5]{\@mltext}{ }[\@mltexttmp]
+\StrGobbleRight{\@mltexttmp}{1}[\@mltext]
+\tagstructbegin{tag=P,alttext-o=\detokenize\expandafter{\@mltext},actualtext-o=\detokenize\expandafter{\@mltext}}
+ \tagmcbegin{tag=P,alttext-o=\detokenize\expandafter{\@mltext},actualtext-o=\detokenize\expandafter{\@mltext}}
+ #1
+}
+
 \makeatother
 
 \makeatletter
+
+\renewenvironment{align}{%
+  \collect@body\wrapml\auxiliaryspace
+ \start@align\@ne\st@rredfalse\m@ne
+}{%
+  \math@cr \black@\totwidth@
+  \egroup
+  \@macronestedifalign
+  \ignorespacesafterend
+  \tagmcend
+  \tagstructend
+}
+
+\renewenvironment{align*}{%
+  \collect@body\wrapmlstar\auxiliaryspace
+  \start@align\@ne\st@rredtrue\m@ne
+}{%
+  \endalign
+}
 
 \renewenvironment{alignat}{%
   \collect@body\wrapml\auxiliaryspace\auxiliaryspace
@@ -170,47 +244,24 @@ replace_dls_and_double_dls(#1)
 }{%
   \endalign
 }
+
 \renewenvironment{xalignat}{%
-  \collect@body\wrapml\auxiliaryspace
+  \collect@body\wrapmlalt\auxiliaryspace
   \start@align\@ne\st@rredfalse
 }{%
   \endalign
 }
+
 \renewenvironment{xalignat*}{%
   \collect@body\wrapmlstar\auxiliaryspace
   \start@align\@ne\st@rredtrue
 }{%
   \endalign
 }
+
 \renewenvironment{xxalignat}{%
-  \collect@body\wrapml\auxiliaryspace
+  \collect@body\wrapmlalt\auxiliaryspace
   \start@align\tw@\st@rredtrue
-}{%
-  \endalign
-}
-
-\renewenvironment{align}{%
-  \collect@body\wrapml\auxiliaryspace
- \start@align\@ne\st@rredfalse\m@ne
-}{%
-  \math@cr \black@\totwidth@
-  \egroup
- \ifingather@
-    \restorealignstate@
-    \egroup
-    \nonumber
-    \ifnum0=`{\fi\iffalse}\fi
-  \else
-    $$%
-  \fi
-  \ignorespacesafterend
-  \tagmcend
-  \tagstructend
-}
-
-\renewenvironment{align*}{%
-  \collect@body\wrapmlstar\auxiliaryspace
-  \start@align\@ne\st@rredtrue\m@ne
 }{%
   \endalign
 }
@@ -230,7 +281,7 @@ replace_dls_and_double_dls(#1)
 }
 
 \renewenvironment{gather}{%
-  \collect@body\wrapml\auxiliaryspace\auxiliaryspace
+  \collect@body\wrapmlalt\auxiliaryspace\auxiliaryspace
   \start@gather\st@rredfalse
 }{%
   \math@cr \black@\totwidth@ \egroup
@@ -247,10 +298,11 @@ replace_dls_and_double_dls(#1)
 }
 
 \renewenvironment{multline}{%
-  \collect@body\wrapml\auxiliaryspace\auxiliaryspace
+  \collect@body\wrapmlalt\auxiliaryspace\auxiliaryspace
   \start@multline\st@rredfalse
 }{%
-  \iftagsleft@ \@xp\lendmultline@ \else \@xp\rendmultline@ \fi
+%  \iftagsleft@ \@xp\lendmultline@ \else \@xp\rendmultline@ \fi
+  \@macronestedifmultline
   \ignorespacesafterend
   \tagmcend
   \tagstructend
@@ -264,6 +316,246 @@ replace_dls_and_double_dls(#1)
 }
 
 \makeatother
+%%%%
+% end of tagpdf option code
+%%%%
+\else
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+% accsupp option code (default)   %
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+%\def\messaggio{option accsupp} %debug
+
+\RequirePackage{accsupp}
+\RequirePackage{ifluatex}
+%\RequirePackage{amsmath}
+%\RequirePackage{amssymb}
+%\RequirePackage{xstring}
+\ifluatex  \pdfextension catalog{/Lang (en-US)}
+  \RequirePackage{fontspec}
+  \RequirePackage{luacode}
+  \newfontface\zerowidthfont{freeserif}
+\directlua{
+require("axessibility.lua")
+}
+\else
+\pdfcompresslevel=0
+\pdfoptionpdfminorversion=6
+\input{glyphtounicode}
+\pdfgentounicode=1
+\fi
+\makeatletter
+
+\newtoks\@mltext
+\newtoks\@mltexttmp
+\newcommand{\doreplacement}[1]{
+\ifluatex
+\directlua{
+replace_dls_and_double_dls(#1)
+}
+\fi
+}
+
+\renewcommand*{\BeginAccSupp}[1]{%
+  \begingroup
+    \setkeys{ACCSUPP}{#1}%
+    \edef\ACCSUPP@span{%
+      /S/Span<<%
+        \ifx\ACCSUPP@Lang\relax
+        \else
+          /Lang\ACCSUPP@Lang
+        \fi
+        \ifx\ACCSUPP@Alt\relax
+        \else
+          /Alt\ACCSUPP@Alt
+        \fi
+        \ifx\ACCSUPP@ActualText\relax
+        \else
+          /ActualText\ACCSUPP@ActualText
+        \fi
+        \ifx\ACCSUPP@E\relax
+        \else
+          /E\ACCSUPP@E
+        \fi
+      >>%
+    }%
+    \ACCSUPP@bdc
+    \ACCSUPP@space
+  \endgroup
+}
+\makeatother
+
+
+\newcommand{\auxiliaryspace}{ }
+
+
+\makeatletter
+\long\def\wrap#1{
+\BeginAccSupp{method=escape,ActualText=\detokenize\expandafter{#1}}
+ #1
+\EndAccSupp{}%
+}
+\makeatother
+
+\makeatletter
+\long\def\wrapml#1{
+\def\@mltext{\detokenize\expandafter{#1}}
+\def\@mltexttmp{}
+\StrBehind[5]{\@mltext}{ }[\@mltexttmp]
+\StrGobbleRight{\@mltexttmp}{1}[\@mltext]
+%\mltext
+%\StrBehind[2]{\@xp{\the\@mltext}}{ }[\@mltexttmp]
+%\StrGobbleRight{\@xp{\the\@mltexttmp}}{1}[\@mltext]
+%
+\BeginAccSupp{method=escape,ActualText=\auxiliaryspace\@mltext}
+ #1
+\EndAccSupp{}%
+}
+\makeatother
+
+
+\makeatletter
+\renewenvironment{equation}{%
+ \incr@eqnum
+  \mathdisplay@push
+  \st@rredfalse \global\@eqnswtrue
+ \mathdisplay{equation}%
+  \collect@body\wrap\auxiliaryspace}{%
+  \endmathdisplay{equation}%
+  \mathdisplay@pop
+  \ignorespacesafterend
+}
+\makeatother
+
+
+\makeatletter
+\renewenvironment{equation*}{%
+  \mathdisplay@push
+  \st@rredtrue \global\@eqnswfalse
+  \mathdisplay{equation*}%
+  \collect@body\wrap\auxiliaryspace}{%
+  \endmathdisplay{equation*}%
+  \mathdisplay@pop
+  \ignorespacesafterend
+}
+\makeatother
+
+
+\makeatletter
+\protected\def\[#1\]{\begin{equation*}#1\end{equation*}}
+\makeatother
+
+\makeatletter
+\newenvironment{tempenv}{%
+  \relax\ifmmode\@badmath\else$\fi%
+ \collect@body\wrap}{%
+  \relax\ifmmode\ifinner$\else\@badmath\fi\else \@badmath\fi}
+\protected\def\(#1\){\begin{tempenv}#1\end{tempenv}}
+\makeatother
+
+
+\makeatletter
+
+\renewenvironment{align}{%
+  \collect@body\wrapml\auxiliaryspace
+ \start@align\@ne\st@rredfalse\m@ne
+}{%
+  \math@cr \black@\totwidth@
+  \egroup
+  \@macronestedifalign
+  \ignorespacesafterend
+}
+
+\renewenvironment{align*}{%
+  \collect@body\wrapml\auxiliaryspace
+  \start@align\@ne\st@rredtrue\m@ne
+}{%
+  \endalign
+}
+
+\renewenvironment{alignat}{%
+  \collect@body\wrapml\auxiliaryspace
+  \start@align\z@\st@rredfalse
+}{%
+  \endalign
+}
+\renewenvironment{alignat*}{%
+  \collect@body\wrapml\auxiliaryspace
+  \start@align\z@\st@rredtrue
+}{%
+  \endalign
+}
+\renewenvironment{xalignat}{%
+  \collect@body\wrapml\auxiliaryspace
+  \start@align\@ne\st@rredfalse
+}{%
+  \endalign
+}
+\renewenvironment{xalignat*}{%
+  \collect@body\wrapml\auxiliaryspace
+  \start@align\@ne\st@rredtrue
+}{%
+  \endalign
+}
+\renewenvironment{xxalignat}{%
+  \collect@body\wrapml\auxiliaryspace
+  \start@align\tw@\st@rredtrue
+}{%
+  \endalign
+}
+\renewenvironment{flalign}{%
+  \collect@body\wrapml\auxiliaryspace
+  \start@align\tw@\st@rredfalse\m@ne
+}{%
+  \endalign
+}
+
+\renewenvironment{flalign*}{%
+  \collect@body\wrapml\auxiliaryspace
+  \start@align\tw@\st@rredtrue\m@ne
+}{%
+  \endalign
+}
+
+\renewenvironment{gather}{%
+  \collect@body\wrapml\auxiliaryspace\auxiliaryspace
+  \start@gather\st@rredfalse
+}{%
+  \math@cr \black@\totwidth@ \egroup
+  $$\ignorespacesafterend
+}
+
+\renewenvironment{gather*}{%
+  \collect@body\wrapml\auxiliaryspace\auxiliaryspace
+  \start@gather\st@rredtrue
+}{%
+  \endgather
+}
+
+\renewenvironment{multline}{%
+  \collect@body\wrapml\auxiliaryspace\auxiliaryspace
+  \start@multline\st@rredfalse
+}{%
+  %\iftagsleft@ \@xp\lendmultline@ \else \@xp\rendmultline@ \fi
+  \@macronestedifmultline
+  \ignorespacesafterend
+}
+
+\renewenvironment{multline*}{
+  \collect@body\wrapml\auxiliaryspace\auxiliaryspace
+  \start@multline\st@rredtrue
+}{
+  \endmultline
+}
+
+%%}
+%%
+\makeatother
+%%%%
+% end of accsupp option code
+%%%%
+\fi
 
 \endinput
 %%
