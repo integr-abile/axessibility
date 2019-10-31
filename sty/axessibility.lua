@@ -5,7 +5,6 @@ local open_dls = false
 local open_double_dls = false
 -- we use this function to switch on or switch off automatic replacement of $$ and $ 
 -- a - the flag (true/false) specifying if the package should do the replacements 
--- b - replace empty lines in formula on some value or not
 function replace_dls_and_double_dls(a) 
 	if a and not luatexbase.in_callback("process_input_buffer", "process_input_buffer") then
 		luatexbase.add_to_callback("process_input_buffer", replace_chars_callback, "process_input_buffer")

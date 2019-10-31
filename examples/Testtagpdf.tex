@@ -19,7 +19,6 @@
 %\messaggio %debug
 
 \bigskip
-\doreplacement{true}
 \tagstructbegin{tag=P}
   \tagmcbegin{tag=P}
 One inline formula (accessible and tagged?)
@@ -33,7 +32,8 @@ Another inline formula (\verb|$ ... $|, accessible,when compile in lualatex and 
   \tagmcend
 \tagstructend
 \doreplacement{true}
-$3 + 3 = 6$ \\ 
+$3 + 3 = 6$\\
+\doreplacement{false}	
 \tagstructbegin{tag=P}
   \tagmcbegin{tag=P}
 one centered formula, without label (equation*, accessible and tagged?):
@@ -42,7 +42,6 @@ one centered formula, without label (equation*, accessible and tagged?):
 \begin{equation*}
 a x^2 + b x + 1 c = 0
 \end{equation*}
-\doreplacement{false}
 \tagstructbegin{tag=P}
   \tagmcbegin{tag=P}
 one centered formula, without label (\verb|$$ ... $$|, accessible,when compile in lualatex and tagged?):
