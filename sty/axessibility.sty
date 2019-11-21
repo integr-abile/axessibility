@@ -108,20 +108,104 @@ require("axessibility.lua")
 \newtoks\@mltext
 \newtoks\@mltexttmp
 
+%switch on expl3 syntaks for works with variables
+\ExplSyntaxOn
 %switch on or switch off $$ and $ replacement and replacement of empty lines if $$ or $ opened and if first argument of command is true. this command works only in luatex/lualatex
 \newcommand{\doreplacement}[1]{
-\tagpdfifluatexT
+\sys_if_engine_luatex:TF{
 \directlua{
 replace_dls_and_double_dls(#1)
+}}
+{\PackageWarning{axessibility}{\detokenize{\doreplacement}~command~works~only~in~luatex/lualatex.}}
 }
+%variable,which show,if we have opened paragraph
+\bool_new:N\g__opened_par_bool
+%variable,which shows,if we in some structure,eccept paragraph.
+\bool_new:N\g__in_struct_bool
+%sequence with environments,before and after which we will execute 
+\seq_const_from_clist:Nn\g__env_seq{equation,equation*,temp@env,align,multline}
+%close and open mc or structure in environments
+\seq_map_inline:cn{g__env_seq}{
+\BeforeBeginEnvironment{#1}{\closeStructureIfNeed\bool_gset_true:N\g__in_struct_bool}
+\AfterEndEnvironment{#1}{\bool_gset_false:N\g__in_struct_bool\openStructureIfNeed}
+}
+\newcommand{\openStructureIfNeed}{
+\bool_if:NTF{\g__in_struct_bool}{}{
+\tagstructbegin{tag=P}
+\tagmcbegin{tag=P}
+}}
+\newcommand{\closeStructureIfNeed}{
+\bool_if:NTF{\g__opened_par_bool}{
+\tagmcend
+\tagstructend
+}
+{
+}
+}
+\newcommand{\autoTaggingOfPar}{
+%\message{the_size_of_stack_of_structure_elements_is_\seq_count:N \g__tag_struct_stack_seq}
+\bool_if:NTF{\g__in_struct_bool}{}{
+\closeStructureIfNeed
+\tagstructbegin{tag=P}
+\tagmcbegin{tag=P}
+}
+\bool_gset_true:N\g__opened_par_bool
 }
 \let\begin@document=\document
 \let\end@document=\enddocument
-\renewcommand{\document}{\begin@document\tagstructbegin{tag=Document}}
-\renewcommand{\enddocument}{\tagstructend\end@document}
-\makeatother
-
-\makeatletter
+\renewcommand{\document}{\begin@document\tagstructbegin{tag=Document}
+\everypar{\autoTaggingOfPar}
+}
+\renewcommand{\enddocument}{
+%closing all open structures
+\bool_if:NTF{\g__opened_par_bool}{\tagmcend}{}
+\int_step_inline:nnn{2}{\seq_count:N \g__tag_struct_stack_seq }{\tagstructend}
+\bool_gset_false:N\g__opened_par_bool
+\end@document}
+%commands for sectioning
+%ddictionary for sectioning
+\prop_new:N {\g_sections_prop}
+\prop_gput:Nnn{\g_sections_prop}{chapter}{H2}
+\prop_gput:Nnn{\g_sections_prop}{section}{H3}
+\prop_gput:Nnn{\g_sections_prop}{subsection}{H4}
+\prop_gput:Nnn{\g_sections_prop}{subsubsection}{H5}
+\prop_gput:Nnn{\g_sections_prop}{paragraph}{H6}
+\prop_gput:Nnn{\g_sections_prop}{maketitle}{H1}
+\cs_new_protected:Nn \g__iterate:nn
+ {
+  \cs_if_exist:cT { #1 }
+   {
+    \cs_set_eq:cc { orig@#1 } { #1 }
+    \cs_gset_protected_nopar:cpn { #1 } ##1
+     {
+\bool_gset_true:N\g__in_struct_bool
+            \closeStructureIfNeed
+%\message{the_size_of_stack_of_structure_elements_before_opening_of_structure_is_\seq_count:N \g__tag_struct_stack_seq}     
+	 \tagstructbegin{tag=#2}
+            \tagmcbegin{tag=#2}
+      \use:c { orig@#1 } { ##1 }
+      \tagmcend
+      \tagstructend
+\bool_gset_false:N{\g__in_struct_bool}
+\bool_set_false:N\g__opened_par_bool
+\everypar{\autoTaggingOfPar}
+     }
+   }
+ }
+\prop_map_function:NN \g_sections_prop \g__iterate:nn
+%\let\old@maketitle=\maketitle
+%\let\old@chapter=\chapter
+%\let\old@section=\section
+%\let\old@subsection=\subsection
+%\let\old@subsubsection=\subsubsection
+%\let\old@paragraph=\paragraph
+%\ifdef{\chapter}{
+%\renewcommand{\chapter}[1]{\closeStructureIfNeed\tagstructbegin{tag=H1}\tagmcbegin{tag=H1}\old@chapter{#1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}}
+%\renewcommand{\section}[1]{\closeStructureIfNeed\tagstructbegin{tag=H2}\tagmcbegin{tag=H2}\old@section{#1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
+%\renewcommand{\subsection}[1]{\closeStructureIfNeed\tagstructbegin{tag=H3}\tagmcbegin{tag=H3}\old@subsection{#1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
+%\renewcommand{\subsubsection}[1]{\closeStructureIfNeed\tagstructbegin{tag=H4}\tagmcbegin{tag=H4}\old@subsubsection{#1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
+%\renewcommand{\paragraph}[1]{\closeStructureIfNeed\tagstructbegin{tag=H5}\tagmcbegin{tag=H5}\old@paragraph{#1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
+%\renewcommand{\maketitle}[1]{\closeStructureIfNeed\tagstructbegin{tag=Title}\tagmcbegin{tag=Title}\old@maketitle{#1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
 \newenvironment{temp@env}{%
   \relax\ifmmode\@badmath\else$\fi%
  \collect@body\wrap}{%
@@ -132,16 +216,12 @@ replace_dls_and_double_dls(#1)
 \newcommand{\auxiliaryspace}{ }
 
 \makeatletter
-\long\def\wrap#1{
-\tagstructbegin{tag=P,alttext-o=\detokenize\expandafter{#1},actualtext-o=\detokenize\expandafter{#1}}
+\long\def\wrap#1{\tagstructbegin{tag=P,alttext-o=\detokenize\expandafter{#1},actualtext-o=\detokenize\expandafter{#1}}
  \tagmcbegin{tag=P,alttext-o=\detokenize\expandafter{#1},actualtext-o=\detokenize\expandafter{#1}}
  #1
  \tagmcend
 \tagstructend
 }
-\makeatother
-
-\makeatletter
 \renewenvironment{equation}{%
  \incr@eqnum
   \mathdisplay@push
@@ -166,13 +246,12 @@ replace_dls_and_double_dls(#1)
 }
 \makeatother
 
-\makeatletter
 \protected\def\[#1\]{\begin{equation*}#1\end{equation*}}
-\makeatother
 
 \makeatletter
 
 \long\def\wrapml#1{
+\closeStructureIfNeed
 \def\@mltext{\detokenize\expandafter{#1}}
 \def\@mltexttmp{}
 \StrBehind[6]{\@mltext}{ }[\@mltexttmp]
@@ -186,6 +265,7 @@ replace_dls_and_double_dls(#1)
 % This one should be \wrapml parametrized \StrBehind[5]
 %
 \long\def\wrapmlstar#1{
+\closeStructureIfNeed
 \def\@mltext{\detokenize\expandafter{#1}}
 \def\@mltexttmp{}
 \StrBehind[5]{\@mltext}{ }[\@mltexttmp]
@@ -199,6 +279,7 @@ replace_dls_and_double_dls(#1)
 % This one should be \wrapml parametrized = \wrapmlstar
 %
 \long\def\wrapmlalt#1{
+\closeStructureIfNeed
 \def\@mltext{\detokenize\expandafter{#1}}
 \def\@mltexttmp{}
 \StrBehind[5]{\@mltext}{ }[\@mltexttmp]
@@ -316,6 +397,7 @@ replace_dls_and_double_dls(#1)
 }
 
 \makeatother
+\ExplSyntaxOff
 %%%%
 % end of tagpdf option code
 %%%%

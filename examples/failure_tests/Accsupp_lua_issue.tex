@@ -1,0 +1,11 @@
+\documentclass{article}
+\usepackage[accsupp]{axessibility}
+%testing of expanding of macrocommands
+\newcommand{\test}[2]{#1+#2=#1-#2}
+\begin{document}
+\pagestyle{empty} %why only one formula read by screanreader?
+\(\test{1}{0}\)
+\[
+1+1=2
+\]
+\end{document} 
