@@ -216,8 +216,8 @@ replace_dls_and_double_dls(#1)
 \newcommand{\auxiliaryspace}{ }
 
 \makeatletter
-\long\def\wrap#1{\tagstructbegin{tag=P,alttext-o=\detokenize\expandafter{#1},actualtext-o=\detokenize\expandafter{#1}}
- \tagmcbegin{tag=P,alttext-o=\detokenize\expandafter{#1},actualtext-o=\detokenize\expandafter{#1}}
+\long\def\wrap#1{\tagstructbegin{tag=P,actualtext-o=\detokenize\expandafter{#1}}
+ \tagmcbegin{tag=P,actualtext-o=\detokenize\expandafter{#1}}
  #1
  \tagmcend
 \tagstructend
@@ -256,8 +256,8 @@ replace_dls_and_double_dls(#1)
 \def\@mltexttmp{}
 \StrBehind[6]{\@mltext}{ }[\@mltexttmp]
 \StrGobbleRight{\@mltexttmp}{1}[\@mltext]
-\tagstructbegin{tag=P,alttext-o=\detokenize\expandafter{\@mltext},actualtext-o=\detokenize\expandafter{\@mltext}}
- \tagmcbegin{tag=P,alttext-o=\detokenize\expandafter{\@mltext},actualtext-o=\detokenize\expandafter{\@mltext}}
+\tagstructbegin{tag=P,actualtext-o=\detokenize\expandafter{\@mltext}}
+ \tagmcbegin{tag=P,actualtext-o=\detokenize\expandafter{\@mltext}}
  #1
 }
 
@@ -270,8 +270,8 @@ replace_dls_and_double_dls(#1)
 \def\@mltexttmp{}
 \StrBehind[5]{\@mltext}{ }[\@mltexttmp]
 \StrGobbleRight{\@mltexttmp}{1}[\@mltext]
-\tagstructbegin{tag=P,alttext-o=\detokenize\expandafter{\@mltext},actualtext-o=\detokenize\expandafter{\@mltext}}
- \tagmcbegin{tag=P,alttext-o=\detokenize\expandafter{\@mltext},actualtext-o=\detokenize\expandafter{\@mltext}}
+\tagstructbegin{tag=P,actualtext-o=\detokenize\expandafter{\@mltext}}
+ \tagmcbegin{tag=P,actualtext-o=\detokenize\expandafter{\@mltext}}
  #1
 }
 
@@ -284,14 +284,10 @@ replace_dls_and_double_dls(#1)
 \def\@mltexttmp{}
 \StrBehind[5]{\@mltext}{ }[\@mltexttmp]
 \StrGobbleRight{\@mltexttmp}{1}[\@mltext]
-\tagstructbegin{tag=P,alttext-o=\detokenize\expandafter{\@mltext},actualtext-o=\detokenize\expandafter{\@mltext}}
- \tagmcbegin{tag=P,alttext-o=\detokenize\expandafter{\@mltext},actualtext-o=\detokenize\expandafter{\@mltext}}
+\tagstructbegin{tag=P,actualtext-o=\detokenize\expandafter{\@mltext}}
+ \tagmcbegin{tag=P,actualtext-o=\detokenize\expandafter{\@mltext}}
  #1
 }
-
-\makeatother
-
-\makeatletter
 
 \renewenvironment{align}{%
   \collect@body\wrapml\auxiliaryspace
