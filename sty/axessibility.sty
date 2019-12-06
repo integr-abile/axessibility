@@ -158,6 +158,13 @@ replace_dls_and_double_dls(#1)
 {
 }
 }
+\newcommand{\CloseFormula}{\tagmcend
+\bool_if:NTF{\g__opened_par_bool}{
+%now we close structure to,because even in inline formulas we open structure tag.
+\tagstructend}{
+\tagstructend
+}
+}
 \newcommand{\autoTaggingOfPar}{
 %\message{the_size_of_stack_of_structure_elements_is_\seq_count:N \g__tag_struct_stack_seq}
 \bool_if:NTF{\g__in_struct_bool}{}{
@@ -236,9 +243,11 @@ replace_dls_and_double_dls(#1)
 
 \makeatletter
 \long\def\wrap#1{\bool_if:NTF{\g__opened_par_bool}{
-\tagmcbegin{tag=Span,actualtext-o=\detokenize\expandafter{#1}}
+\tagstructbegin{tag=Span,actualtext-o=\detokenize\expandafter{#1}}
+\tagmcbegin{tag=Span}
 #1
  \tagmcend
+ \tagstructend
 }
 {\tagstructbegin{tag=P,actualtext-o=\detokenize\expandafter{#1}}
  \tagmcbegin{tag=P}
@@ -272,7 +281,8 @@ replace_dls_and_double_dls(#1)
 \def\@mltexttmp{}
 \StrBehind[6]{\@mltext}{~}[\@mltexttmp]
 \StrGobbleRight{\@mltexttmp}{1}[\@mltext]
-\bool_if:NTF{\g__opened_par_bool}{\tagmcbegin{tag=Span,actualtext-o=\detokenize\expandafter{\@mltext}}
+\bool_if:NTF{\g__opened_par_bool}{\tagstructbegin{tag=Span,actualtext-o=\detokenize\expandafter{\@mltext}}
+\tagmcbegin{tag=Span,}
 #1}
 {\tagstructbegin{tag=P,actualtext-o=\detokenize\expandafter{\@mltext}}
 \tagmcbegin{tag=P}
@@ -287,7 +297,8 @@ replace_dls_and_double_dls(#1)
 \def\@mltexttmp{}
 \StrBehind[5]{\@mltext}{~}[\@mltexttmp]
 \StrGobbleRight{\@mltexttmp}{1}[\@mltext]
-\bool_if:NTF{\g__opened_par_bool}{\tagmcbegin{tag=Span,actualtext-o=\detokenize\expandafter{\@mltext}}
+\bool_if:NTF{\g__opened_par_bool}{\tagstructbegin{tag=Span,,actualtext-o=\detokenize\expandafter{\@mltext}}
+\tagmcbegin{tag=Span}
 #1}{
 \tagstructbegin{tag=P,actualtext-o=\detokenize\expandafter{\@mltext}}
 \tagmcbegin{tag=P}
@@ -302,7 +313,8 @@ replace_dls_and_double_dls(#1)
 \def\@mltexttmp{}
 \StrBehind[5]{\@mltext}{~}[\@mltexttmp]
 \StrGobbleRight{\@mltexttmp}{1}[\@mltext]
-\bool_if:NTF{\g__opened_par_bool}{\tagmcbegin{tag=Span,actualtext-o=\detokenize\expandafter{\@mltext}}
+\bool_if:NTF{\g__opened_par_bool}{\tagstructbegin{tag=Span,actualtext-o=\detokenize\expandafter{\@mltext}}
+\tagmcbegin{tag=Span}
 #1}{\tagstructbegin{tag=P,actualtext-o=\detokenize\expandafter{\@mltext}}
 \tagmcbegin{tag=P}
 #1}
@@ -316,10 +328,7 @@ replace_dls_and_double_dls(#1)
   \egroup
   \@macronestedifalign
   \ignorespacesafterend
-\tagmcend
-\bool_if:NTF{\g__opened_par_bool}{}{
-\tagstructend
-}
+\CloseFormula
 }
 
 \renewenvironment{align*}{%
@@ -384,11 +393,8 @@ replace_dls_and_double_dls(#1)
 }{%
   \math@cr \black@\totwidth@ \egroup
   $$\ignorespacesafterend
-  \tagmcend
-\bool_if:NTF{\g__opened_par_bool}{}
-{\tagstructend}
+  \CloseFormula
 }
-
 \renewenvironment{gather*}{%
   \collect@body\wrapmlstar\auxiliaryspace\auxiliaryspace
   \start@gather\st@rredtrue
@@ -403,11 +409,8 @@ replace_dls_and_double_dls(#1)
 %  \iftagsleft@ \@xp\lendmultline@ \else \@xp\rendmultline@ \fi
   \@macronestedifmultline
   \ignorespacesafterend
-\tagmcend
-\bool_if:NTF{\g__opened_par_bool}{}
-{\tagstructend}
+\CloseFormula
 }
-
 \renewenvironment{multline*}{
     \collect@body\wrapmlstar\auxiliaryspace\auxiliaryspace
     \start@multline\st@rredtrue
