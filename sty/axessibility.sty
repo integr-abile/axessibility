@@ -9,7 +9,7 @@
 %% This is a generated file.
 %% 
 %% Copyright (C) 2018, 2019  by
-%% Anna Capietto, Sandro Coriasco, Tiziana Armano,
+%% Anna Capietto, Sandro Coriasco, Boris Doubrov, Alexander Kozlovskiy, Tiziana Armano,
 %% Nadir Murru, Alice Ruighi, Eugenia Taranto,
 %% Dragan Ahmetovic, Cristian Bernareggi, Michele Berra.
 %% 
@@ -122,22 +122,38 @@ replace_dls_and_double_dls(#1)
 \bool_new:N\g__opened_par_bool
 %variable,which shows,if we in some structure,eccept paragraph.
 \bool_new:N\g__in_struct_bool
-%sequence with environments,before and after which we will execute 
-\seq_const_from_clist:Nn\g__env_seq{equation,equation*,temp@env,align,multline}
+%variable,which show,if we in some environment,o no.
+\str_new:N{\g__env_str}
+%property with environments,before and after which we will execute 
+\prop_set_from_keyval:Nn\g__env_prop{temp@env=false,equation=true,equation*=true,align=true,align*=true,flalign=true,flalign*=true,gather=true,gather*=true,multline=true,multline*=true,alignat=true,alignat*=true,xalignat=true,xalignat*=true,xxalignat=true,xxalignat*=true}
 %close and open mc or structure in environments
-\seq_map_inline:cn{g__env_seq}{
-\BeforeBeginEnvironment{#1}{\closeStructureIfNeed\bool_gset_true:N\g__in_struct_bool}
-\AfterEndEnvironment{#1}{\bool_gset_false:N\g__in_struct_bool\openStructureIfNeed}
+\prop_map_inline:cn{g__env_prop}{
+\BeforeBeginEnvironment{#1}{\closeStructureIfNeed{#2}\bool_gset_true:N\g__in_struct_bool}
+\AfterEndEnvironment{#1}{\bool_gset_false:N\g__in_struct_bool\str_gset:Nn{\g__env_str}{#1}\openStructureIfNeed{#2}}
 }
-\newcommand{\openStructureIfNeed}{
+\newcommand{\openStructureIfNeed}[1]{
 \bool_if:NTF{\g__in_struct_bool}{}{
-\tagstructbegin{tag=P}
+\str_case:nnF {#1}{
+{true}
+{\bool_gset_true:N{\g__opened_par_bool}\tagstructbegin{tag=P}}
+{1}
+{\bool_gset_true:N\g__opened_par_bool\tagstructbegin{tag=P}}
+}{\str_gclear:N{\g__env_str}}
 \tagmcbegin{tag=P}
-}}
-\newcommand{\closeStructureIfNeed}{
+}{}
+}
+\newcommand{\closeStructureIfNeed}[1]{
 \bool_if:NTF{\g__opened_par_bool}{
 \tagmcend
-\tagstructend
+\str_case:nnF {#1}{
+{true}
+{\bool_gset_false:N\g__opened_par_bool\tagstructend
+}
+{1}
+{\bool_gset_false:N\g__opened_par_bool\tagstructend
+}
+}
+{}
 }
 {
 }
@@ -145,11 +161,14 @@ replace_dls_and_double_dls(#1)
 \newcommand{\autoTaggingOfPar}{
 %\message{the_size_of_stack_of_structure_elements_is_\seq_count:N \g__tag_struct_stack_seq}
 \bool_if:NTF{\g__in_struct_bool}{}{
-\closeStructureIfNeed
+\str_if_empty:NTF{\g__env_str}{
+\closeStructureIfNeed{true}
 \tagstructbegin{tag=P}
 \tagmcbegin{tag=P}
-}
 \bool_gset_true:N\g__opened_par_bool
+}
+{\str_gclear:N{\g__env_str}}
+}
 }
 \let\begin@document=\document
 \let\end@document=\enddocument
@@ -179,7 +198,7 @@ replace_dls_and_double_dls(#1)
     \cs_gset_protected_nopar:cpn { #1 } ##1
      {
 \bool_gset_true:N\g__in_struct_bool
-            \closeStructureIfNeed
+            \closeStructureIfNeed{true}
 %\message{the_size_of_stack_of_structure_elements_before_opening_of_structure_is_\seq_count:N \g__tag_struct_stack_seq}     
 	 \tagstructbegin{tag=#2}
             \tagmcbegin{tag=#2}
@@ -200,12 +219,12 @@ replace_dls_and_double_dls(#1)
 %\let\old@subsubsection=\subsubsection
 %\let\old@paragraph=\paragraph
 %\ifdef{\chapter}{
-%\renewcommand{\chapter}[1]{\closeStructureIfNeed\tagstructbegin{tag=H1}\tagmcbegin{tag=H1}\old@chapter{#1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}}
-%\renewcommand{\section}[1]{\closeStructureIfNeed\tagstructbegin{tag=H2}\tagmcbegin{tag=H2}\old@section{#1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
-%\renewcommand{\subsection}[1]{\closeStructureIfNeed\tagstructbegin{tag=H3}\tagmcbegin{tag=H3}\old@subsection{#1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
-%\renewcommand{\subsubsection}[1]{\closeStructureIfNeed\tagstructbegin{tag=H4}\tagmcbegin{tag=H4}\old@subsubsection{#1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
-%\renewcommand{\paragraph}[1]{\closeStructureIfNeed\tagstructbegin{tag=H5}\tagmcbegin{tag=H5}\old@paragraph{#1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
-%\renewcommand{\maketitle}[1]{\closeStructureIfNeed\tagstructbegin{tag=Title}\tagmcbegin{tag=Title}\old@maketitle{#1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
+%\renewcommand{\chapter}[1]{\closeStructureIfNeed{true}\tagstructbegin{tag=H1}\tagmcbegin{tag=H1}\old@chapter{#1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}}
+%\renewcommand{\section}[1]{\closeStructureIfNeed{true}\tagstructbegin{tag=H2}\tagmcbegin{tag=H2}\old@section{#1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
+%\renewcommand{\subsection}[1]{\closeStructureIfNeed{true}\tagstructbegin{tag=H3}\tagmcbegin{tag=H3}\old@subsection{#1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
+%\renewcommand{\subsubsection}[1]{\closeStructureIfNeed{true}\tagstructbegin{tag=H4}\tagmcbegin{tag=H4}\old@subsubsection{#1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
+%\renewcommand{\paragraph}[1]{\closeStructureIfNeed{true}\tagstructbegin{tag=H5}\tagmcbegin{tag=H5}\old@paragraph{#1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
+%\renewcommand{\maketitle}[1]{\closeStructureIfNeed{true}\tagstructbegin{tag=Title}\tagmcbegin{tag=Title}\old@maketitle{#1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
 \newenvironment{temp@env}{%
   \relax\ifmmode\@badmath\else$\fi%
  \collect@body\wrap}{%
@@ -213,14 +232,20 @@ replace_dls_and_double_dls(#1)
 \protected\def\(#1\){\begin{temp@env}#1\end{temp@env}}
 \makeatother
 
-\newcommand{\auxiliaryspace}{ }
+\newcommand{\auxiliaryspace}{~}
 
 \makeatletter
-\long\def\wrap#1{\tagstructbegin{tag=P,actualtext-o=\detokenize\expandafter{#1}}
- \tagmcbegin{tag=P,actualtext-o=\detokenize\expandafter{#1}}
+\long\def\wrap#1{\bool_if:NTF{\g__opened_par_bool}{
+\tagmcbegin{tag=Span,actualtext-o=\detokenize\expandafter{#1}}
+#1
+ \tagmcend
+}
+{\tagstructbegin{tag=P,actualtext-o=\detokenize\expandafter{#1}}
+ \tagmcbegin{tag=P}
  #1
  \tagmcend
-\tagstructend
+\tagstructend   
+}
 }
 \renewenvironment{equation}{%
  \incr@eqnum
@@ -232,9 +257,6 @@ replace_dls_and_double_dls(#1)
   \mathdisplay@pop
   \ignorespacesafterend
 }
-\makeatother
-
-\makeatletter
 \renewenvironment{equation*}{%
   \mathdisplay@push
   \st@rredtrue \global\@eqnswfalse
@@ -244,49 +266,46 @@ replace_dls_and_double_dls(#1)
   \mathdisplay@pop
   \ignorespacesafterend
 }
-\makeatother
-
 \protected\def\[#1\]{\begin{equation*}#1\end{equation*}}
-
-\makeatletter
-
 \long\def\wrapml#1{
-\closeStructureIfNeed
 \def\@mltext{\detokenize\expandafter{#1}}
 \def\@mltexttmp{}
-\StrBehind[6]{\@mltext}{ }[\@mltexttmp]
+\StrBehind[6]{\@mltext}{~}[\@mltexttmp]
 \StrGobbleRight{\@mltexttmp}{1}[\@mltext]
-\tagstructbegin{tag=P,actualtext-o=\detokenize\expandafter{\@mltext}}
- \tagmcbegin{tag=P,actualtext-o=\detokenize\expandafter{\@mltext}}
- #1
+\bool_if:NTF{\g__opened_par_bool}{\tagmcbegin{tag=Span,actualtext-o=\detokenize\expandafter{\@mltext}}
+#1}
+{\tagstructbegin{tag=P,actualtext-o=\detokenize\expandafter{\@mltext}}
+\tagmcbegin{tag=P}
+#1}
 }
 
 %
 % This one should be \wrapml parametrized \StrBehind[5]
 %
 \long\def\wrapmlstar#1{
-\closeStructureIfNeed
 \def\@mltext{\detokenize\expandafter{#1}}
 \def\@mltexttmp{}
-\StrBehind[5]{\@mltext}{ }[\@mltexttmp]
+\StrBehind[5]{\@mltext}{~}[\@mltexttmp]
 \StrGobbleRight{\@mltexttmp}{1}[\@mltext]
+\bool_if:NTF{\g__opened_par_bool}{\tagmcbegin{tag=Span,actualtext-o=\detokenize\expandafter{\@mltext}}
+#1}{
 \tagstructbegin{tag=P,actualtext-o=\detokenize\expandafter{\@mltext}}
- \tagmcbegin{tag=P,actualtext-o=\detokenize\expandafter{\@mltext}}
- #1
+\tagmcbegin{tag=P}
+#1
 }
-
+}
 %
 % This one should be \wrapml parametrized = \wrapmlstar
 %
 \long\def\wrapmlalt#1{
-\closeStructureIfNeed
 \def\@mltext{\detokenize\expandafter{#1}}
 \def\@mltexttmp{}
-\StrBehind[5]{\@mltext}{ }[\@mltexttmp]
+\StrBehind[5]{\@mltext}{~}[\@mltexttmp]
 \StrGobbleRight{\@mltexttmp}{1}[\@mltext]
-\tagstructbegin{tag=P,actualtext-o=\detokenize\expandafter{\@mltext}}
- \tagmcbegin{tag=P,actualtext-o=\detokenize\expandafter{\@mltext}}
- #1
+\bool_if:NTF{\g__opened_par_bool}{\tagmcbegin{tag=Span,actualtext-o=\detokenize\expandafter{\@mltext}}
+#1}{\tagstructbegin{tag=P,actualtext-o=\detokenize\expandafter{\@mltext}}
+\tagmcbegin{tag=P}
+#1}
 }
 
 \renewenvironment{align}{%
@@ -297,8 +316,10 @@ replace_dls_and_double_dls(#1)
   \egroup
   \@macronestedifalign
   \ignorespacesafterend
-  \tagmcend
-  \tagstructend
+\tagmcend
+\bool_if:NTF{\g__opened_par_bool}{}{
+\tagstructend
+}
 }
 
 \renewenvironment{align*}{%
@@ -364,7 +385,8 @@ replace_dls_and_double_dls(#1)
   \math@cr \black@\totwidth@ \egroup
   $$\ignorespacesafterend
   \tagmcend
-  \tagstructend
+\bool_if:NTF{\g__opened_par_bool}{}
+{\tagstructend}
 }
 
 \renewenvironment{gather*}{%
@@ -381,8 +403,9 @@ replace_dls_and_double_dls(#1)
 %  \iftagsleft@ \@xp\lendmultline@ \else \@xp\rendmultline@ \fi
   \@macronestedifmultline
   \ignorespacesafterend
-  \tagmcend
-  \tagstructend
+\tagmcend
+\bool_if:NTF{\g__opened_par_bool}{}
+{\tagstructend}
 }
 
 \renewenvironment{multline*}{

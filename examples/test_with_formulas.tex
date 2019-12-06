@@ -6,7 +6,7 @@
 \begin{document}
 test
 \doreplacement{true}
-\[1-1=0\]
+\[1-1=0\] we have an issue,connected with luamode of tagpdf package,if the next not inline formula will be inserted emmidiately after not inline formula,so we should insert some text before the next formula 
 $$a+b=a^b$$ $a-b=a/b$
 \$$$a^b
 =0\$$$
@@ -20,10 +20,10 @@ $a\%b= %remainder of division
 0$
 $$b$$ %\\$-a\\$
 %
-test \$$a^2-b^2=(a+b)*(a-b)\$$
+\$$a^2-b^2=(a+b)*(a-b)\$$
 \doreplacement{false}
 $\gamma+\beta=1$
-%this formula is probably inaccessible for screenreaders,at least nvda ignore it,because we switch off preprocessing,but after this formula a new formula must be accessible,because we switch on preprocessing again
+this formula was probably inaccessible for screenreaders,at least nvda ignore it,because we switch off preprocessing,but after this formula a new formula should be accessible,because we switch on preprocessing again
 \doreplacement{true}
 \\$\gamma-\beta=0$
 %testing of empty lines in formula
@@ -31,5 +31,6 @@ $\$sqrt{\alpha+\beta}=
 
 \sqrt{\alpha-\beta}$
 %testing _ character and macrocommands
-$$\int\limits_a^b f(x)dx$$ $\test{1}{3}$ \\\$$a/b-1/b=0\\\$$
+$$\int\limits_a^b f(x)dx$$ and $\test{1}{3}$ \\\$$a/b-1/b=0\\\$$
+\doreplacement{false}
 \end{document}
