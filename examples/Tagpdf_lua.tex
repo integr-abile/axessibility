@@ -1,0 +1,13 @@
+\documentclass{article}
+\usepackage{axessibility}
+%testing of expanding of macrocommands
+\newcommand{\test}[2]{#1+#2=#1-#2}
+\pagestyle{empty}
+\begin{document}
+\doreplacement{true}
+$\test{1}{0}$
+$$
+(a+b)*(a-b)=a^2-b^2
+$$
+\doreplacement{false}
+\end{document} 
