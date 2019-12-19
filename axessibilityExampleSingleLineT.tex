@@ -1,0 +1,95 @@
+% 
+% Copyright (C) 2018, 2019, 2020 by 
+% Anna Capietto, Sandro Coriasco, Boris Doubrov, Alexander Koslovski,
+% Tiziana Armano, Nadir Murru, Dragan Ahmetovic, Cristian Bernareggi
+%
+% Based on accsupp and tagpdf
+%
+% This work consists of the main source files axessibility.dtx and axessibility.lua,
+% and the derived files
+%   axessibility.ins, axessibility.sty, axessibility.pdf, README,
+%   axessibilityExampleSingleLineT.tex, axessibilityExampleSingleLineA.tex,
+%.  axessibilityExampleAlignT.tex, axessibilityExampleAlignA.tex
+% 
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is 
+%               Sandro Coriasco
+%
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{axessibility}
+
+\title{The golden mean}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+The golden mean is the number
+  \tagmcend
+\tagstructend
+\[\frac{1 + \sqrt{5}}{2},\] 
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+that is, the root larger in modulus of
+  \tagmcend
+\tagstructend
+\begin{equation} x^2 - x - 1. \end{equation}
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+It is usually defined as the ratio of two lengths \auxiliaryspace
+  \tagmcend
+\tagstructend
+ \(a\)
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+  and \auxiliaryspace
+    \tagmcend
+\tagstructend
+\(b\) 
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+  such that 
+  \tagmcend
+\tagstructend
+\begin{equation*} (a+b) : a = a : b. \end{equation*} 
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+Let \auxiliaryspace
+  \tagmcend
+\tagstructend
+ \(x\) 
+ \tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+be the ratio \auxiliaryspace
+  \tagmcend
+\tagstructend
+\( \frac{a}{b} \).
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+We have \auxiliaryspace
+  \tagmcend
+\tagstructend
+\( \frac{a+b}{a} = 1 + \frac{1}{x} \), 
+\tagstructbegin{tag=P}
+  \tagmcbegin{tag=P}
+from which we get the equation \auxiliaryspace
+  \tagmcend
+\tagstructend
+ \(x^2 = x + 1\).
+
+\end{document}
