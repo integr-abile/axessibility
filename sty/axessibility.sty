@@ -153,23 +153,23 @@ replace_dls_and_double_dls(#1)
 \str_new:N{\g__env_str}
 %property with environments,before and after which we will execute 
 \prop_set_from_keyval:Nn\g__env_prop{temp@env=false,equation=true,equation*=true,align=true,align*=true,flalign=true,flalign*=true,gather=true,gather*=true,multline=true,multline*=true,alignat=true,alignat*=true,xalignat=true,xalignat*=true,xxalignat=true,xxalignat*=true}
+\cs_generate_variant:Nn \prop_item:Nn { NV }
 %close and open mc or structure in environments
 \prop_map_inline:cn{g__env_prop}{
-\BeforeBeginEnvironment{##1}{\closeStructureIfNeed{##2}\bool_gset_true:N\g__in_struct_bool}
-\AfterEndEnvironment{##1}{\bool_gset_false:N\g__in_struct_bool\str_gset:Nn{\g__env_str}{##1}\openStructureIfNeed{##2}}
-}
-\newcommand{\openStructureIfNeed}[1]{
+\BeforeBeginEnvironment{##1}{\closeStructureIfNeed{##2}\bool_gset_true:N\g__in_struct_bool\str_gset:Nn{\g__env_str}{##1}}
+\AfterEndEnvironment{##1}{\bool_gset_false:N\g__in_struct_bool\openStructureIfNeed{##2}}}
+\protected\def\openStructureIfNeed##1{
 \bool_if:NTF{\g__in_struct_bool}{}{
 \str_case:nnF {##1}{
 {true}
 {\bool_gset_true:N{\g__opened_par_bool}\tagstructbegin{tag=P}}
 {1}
 {\bool_gset_true:N\g__opened_par_bool\tagstructbegin{tag=P}}
-}{\str_gclear:N{\g__env_str}}
-\tagmcbegin{tag=P}
 }{}
-}
-\newcommand{\closeStructureIfNeed}[1]{
+\tagmcbegin{tag=P}
+\str_gclear:N{\g__env_str}
+}}
+\protected\def\closeStructureIfNeed##1{
 \bool_if:NTF{\g__opened_par_bool}{
 \tagmcend
 \str_case:nnF {##1}{
@@ -185,17 +185,11 @@ replace_dls_and_double_dls(#1)
 {
 }
 }
-%possible issue - two paragraphs join in one paragraph,after formulas. It happends,because i not found any way to define it,what it will be after formula - usual text or some one else.
-\newcommand{\autoTaggingOfPar}{
+\protected\def\autoTaggingOfPar{
 %\message{the_size_of_stack_of_structure_elements_is_\seq_count:N \g__tag_struct_stack_seq}
 \bool_if:NTF{\g__in_struct_bool}{}{
-\str_if_empty:NTF{\g__env_str}{
 \closeStructureIfNeed{true}
-\tagstructbegin{tag=P}
-\tagmcbegin{tag=P}
-\bool_gset_true:N\g__opened_par_bool
-}
-{\str_gclear:N{\g__env_str}}
+\openStructureIfNeed{true}
 }
 }
 %commands for sectioning
@@ -215,7 +209,7 @@ replace_dls_and_double_dls(#1)
     \cs_gset_protected_nopar:cpn { ##1 } ####1
      {
 \bool_gset_true:N\g__in_struct_bool
-            \closeStructureIfNeed{true}
+\closeStructureIfNeed{true}
 %\message{the_size_of_stack_of_structure_elements_before_opening_of_structure_is_\seq_count:N \g__tag_struct_stack_seq}     
 	 \tagstructbegin{tag=##2}
             \tagmcbegin{tag=##2}
@@ -246,26 +240,40 @@ replace_dls_and_double_dls(#1)
 \newenvironment{temp@env}{%
   \relax\ifmmode\@badmath\else$\fi%
  \collect@body\wrap}{%
-  \relax\ifmmode\ifinner$\else\@badmath\fi\else \@badmath\fi}
+\relax\ifmmode\ifinner$\else\@badmath\fi\else \@badmath\fi}
 \protected\def\(#1\){\begin{temp@env}#1\end{temp@env}}
 \makeatother
 
 \newcommand{\auxiliaryspace}{~}
 
 \makeatletter
-\long\def\wrap#1{\bool_if:NTF{\g__opened_par_bool}{
-\tagstructbegin{tag=Span,actualtext-o=\detokenize\expandafter{#1}}
+\long\def\wrap#1{
+\bool_if:NTF{\g__autotagging_bool}{
+\str_case_e:nnTF{\prop_item:NV{\g__env_prop}{\g__env_str}}{
+{true}
+{\tagstructbegin{tag=P,actualtext-o=\detokenize\expandafter{#1}}
+\tagmcbegin{tag=P}
+ #1
+ \tagmcend
+\tagstructend}
+{1}
+{\tagstructbegin{tag=P,actualtext-o=\detokenize\expandafter{#1}}
+ \tagmcbegin{tag=P}
+ #1
+ \tagmcend
+\tagstructend}
+}{}{\tagstructbegin{tag=Span,actualtext-o=\detokenize\expandafter{#1}}
 \tagmcbegin{tag=Span}
 #1
  \tagmcend
  \tagstructend
 }
+}
 {\tagstructbegin{tag=P,actualtext-o=\detokenize\expandafter{#1}}
- \tagmcbegin{tag=P}
+\tagmcbegin{tag=P}
  #1
  \tagmcend
-\tagstructend   
-}
+\tagstructend}
 }
 \renewenvironment{equation}{%
  \incr@eqnum

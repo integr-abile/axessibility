@@ -1,13 +1,13 @@
 \documentclass{article}
 \usepackage{axessibility}
-\title{test document}
-\author{AlexanderKozlovskiy}
-\date{\today}
-%\maketitle
+%testing of expanding of macrocommands
+\newcommand{\test}[2]{#1+#2=#1-#2}
 \pagestyle{empty}
 \begin{document}
 \doreplacement{true}
-%I dont know way,how understoode,what we will have after formula - usual text,or some environment,so I insert paragraph. In this case we have empty paragraph,which works not correct in lualatex.
-$$(a+b)*(a-b)=(a^2-b^2)$$ $(a+b)^2=a^2+2*a*b+b^2$
-start testing of tagging of paragraphs
-\end{document}
+$\test{1}{0}$
+$$
+(a+b)*(a-b)=a^2-b^2
+$$
+\doreplacement{false}
+\end{document} 
