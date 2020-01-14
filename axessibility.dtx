@@ -240,8 +240,13 @@
 % Lua mode implements the \LaTeX\ command \textbf{doreplacement} to switch on/off the automatic replacement of $\$$ and $\$\$$ by
 % \cs{(} \cs{)} and \cs{[} \cs{]} environments, so that external scripts are no longer required. 
 % This option is disabled by default and can be switched on or off by the call 
-% \textbf{\cs{doreplacement}\{true\}} or \textbf{\cs{doreplacement}\{false\}} respectively. The code is contained in the second main
-% source file axessibility.lua, please see the comments within the file itself for further explanations.
+% \textbf{\cs{doreplacement}\{true\}} or \textbf{\cs{doreplacement}\{false\}} respectively. 
+% When enabled, the replacement is applied to every input line, which might have undesired effects in verbatim mode or other 
+% environments, where $\$$ and $\$\$$ are used as regular symbols. So, it is recommended to switch off the automatic replacement 
+% functionality in such cases. 
+% The Lua code implementing the replacement is contained in the second main source file axessibility.lua. Please see the comments 
+% within the file itself for further explanations.
+% 
 %
 %
 %\section{Known issues}\label{sec:issues}
