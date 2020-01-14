@@ -2,7 +2,7 @@
 -- Anna Capietto, Sandro Coriasco, Boris Doubrov, Alexander Koslovski,
 -- Tiziana Armano, Nadir Murru, Dragan Ahmetovic, Cristian Bernareggi
 --
--- Based on accsupp and tagpdf
+-- Based on accsupp and tagpdf 
 --
 -- This work consists of the main source files axessibility.dtx and axessibility.lua,
 -- and the derived files
