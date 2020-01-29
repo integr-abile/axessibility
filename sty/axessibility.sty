@@ -1,4 +1,4 @@
-%%
+
 %% This is file `axessibility.sty',
 %% generated with the docstrip utility.
 %%
@@ -80,7 +80,7 @@
 %\def\messaggio{option tagpdf} %debug
 
 \RequirePackage{tagpdf}
-\tagpdfsetup{tabsorder=structure,uncompress,activate-all,interwordspace=true}
+\tagpdfsetup{tabsorder=structure,uncompress,activate-all,add-new-tag=Title/P,interwordspace=true}
 \tagpdfifpdftexT
  {
 \pdfcompresslevel=0
@@ -124,7 +124,7 @@ replace_dls_and_double_dls(#1)
 \let\end@document=\enddocument
 \renewcommand{\document}{
 \cs_undefine:N{\noAutotagging}\begin@document\tagstructbegin{tag=Document}
-\bool_if:NTF{\g__autotagging_bool}{\startautotagging\everypar{\autoTaggingOfPar}}{}
+\bool_if:NTF{\g__autotagging_bool}{\startautotagging}{}
 }
 \renewcommand{\enddocument}{
 %closing all open structures
@@ -151,6 +151,8 @@ replace_dls_and_double_dls(#1)
 \bool_new:N\g__in_struct_bool
 %variable,which show,if we in some environment,o no.
 \str_new:N{\g__env_str}
+%variable,which show level of list.
+\int_gzero_new:N{\g__list_level_int}
 %property with environments,before and after which we will execute 
 \prop_set_from_keyval:Nn\g__env_prop{temp@env=false,equation=true,equation*=true,align=true,align*=true,flalign=true,flalign*=true,gather=true,gather*=true,multline=true,multline*=true,alignat=true,alignat*=true,xalignat=true,xalignat*=true,xxalignat=true,xxalignat*=true}
 \cs_generate_variant:Nn \prop_item:Nn { NV }
@@ -192,15 +194,17 @@ replace_dls_and_double_dls(#1)
 \openStructureIfNeed{true}
 }
 }
+\everypar{\autoTaggingOfPar}
 %commands for sectioning
 %ddictionary for sectioning
 \prop_new:N {\g_sections_prop}
-\prop_gput:Nnn{\g_sections_prop}{chapter}{H2}
-\prop_gput:Nnn{\g_sections_prop}{section}{H3}
-\prop_gput:Nnn{\g_sections_prop}{subsection}{H4}
-\prop_gput:Nnn{\g_sections_prop}{subsubsection}{H5}
-\prop_gput:Nnn{\g_sections_prop}{paragraph}{H6}
-\prop_gput:Nnn{\g_sections_prop}{maketitle}{H1}
+\prop_gput:Nnn{\g_sections_prop}{maketitle}{Title}
+\prop_gput:Nnn{\g_sections_prop}{chapter}{H1}
+\prop_gput:Nnn{\g_sections_prop}{section}{H2}
+\prop_gput:Nnn{\g_sections_prop}{subsection}{H3}
+\prop_gput:Nnn{\g_sections_prop}{subsubsection}{H4}
+\prop_gput:Nnn{\g_sections_prop}{paragraph}{H5}
+\prop_gput:Nnn{\g_sections_prop}{subparagraph}{H6}
 \cs_new_protected:Nn \g__iterate:nn
  {
   \cs_if_exist:cT { ##1 }
@@ -223,19 +227,45 @@ replace_dls_and_double_dls(#1)
    }
  }
 \prop_map_function:NN \g_sections_prop \g__iterate:nn
+%\renewcommand{\maketitle}[1]{\closeStructureIfNeed{true}\tagstructbegin{tag=Title}\tagmcbegin{tag=Title}\old@maketitle{##1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
 %\let\old@maketitle=\maketitle
 %\let\old@chapter=\chapter
 %\let\old@section=\section
 %\let\old@subsection=\subsection
 %\let\old@subsubsection=\subsubsection
 %\let\old@paragraph=\paragraph
+%\let\old@subparagraph=\subparagraph
+%\renewcommand{\maketitle}[1]{\closeStructureIfNeed{true}\tagstructbegin{tag=Title}\tagmcbegin{tag=Title}\old@maketitle{##1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
 %\ifdef{\chapter}{
 %\renewcommand{\chapter}[1]{\closeStructureIfNeed{true}\tagstructbegin{tag=H1}\tagmcbegin{tag=H1}\old@chapter{##1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}}
 %\renewcommand{\section}[1]{\closeStructureIfNeed{true}\tagstructbegin{tag=H2}\tagmcbegin{tag=H2}\old@section{##1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
 %\renewcommand{\subsection}[1]{\closeStructureIfNeed{true}\tagstructbegin{tag=H3}\tagmcbegin{tag=H3}\old@subsection{##1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
 %\renewcommand{\subsubsection}[1]{\closeStructureIfNeed{true}\tagstructbegin{tag=H4}\tagmcbegin{tag=H4}\old@subsubsection{##1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
 %\renewcommand{\paragraph}[1]{\closeStructureIfNeed{true}\tagstructbegin{tag=H5}\tagmcbegin{tag=H5}\old@paragraph{##1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
-%\renewcommand{\maketitle}[1]{\closeStructureIfNeed{true}\tagstructbegin{tag=Title}\tagmcbegin{tag=Title}\old@maketitle{##1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
+%\renewcommand{\paragraph}[1]{\closeStructureIfNeed{true}\tagstructbegin{tag=H6}\tagmcbegin{tag=H6}\old@subparagraph{##1}\tagmcend\tagstructend\everypar{\autoTaggingOfPar}}
+
+%commands for tagging of lists.
+\let\start@list=\list
+\let\end@list=\endlist
+\let\make@label=\makelabel
+\renewcommand{\list}{
+\int_case:NTF{\g__list_level_int}{{0}{\closeStructureIfNeed{true}}}{}
+\int_gincr:N{\g__list_level_int}
+\tagstructbegin{tag=L}
+\start@list
+}
+\renewcommand{\endlist}{
+\end@list
+\int_gdecr:N{\g__list_level_int}
+\tagstructend
+\int_case:NTF{\g__list_level_int}{{0}{\openStructureIfNeed{true}}}{}
+}
+\renewcommand{\makelabel}[1]{\tagstructbegin{tag=Lbl}
+\tagmcbegin{\tag=Lbl}
+\make@label{##1}
+\tagmcend
+\tagstructend
+}
 }
 \newenvironment{temp@env}{%
   \relax\ifmmode\@badmath\else$\fi%
