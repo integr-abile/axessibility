@@ -1,10 +1,37 @@
-﻿pdf.setmajorversion(2)
-pdf.setminorversion(0)
+-- Copyright (C) 2018, 2019, 2020, 2021 by 
+-- Anna Capietto, Sandro Coriasco, Boris Doubrov, Alexander Kozlovskiy,
+-- Tiziana Armano, Nadir Murru, Dragan Ahmetovic, Cristian Bernareggi
+--
+-- Based on accsupp and tagpdf
+--
+-- This work consists of the main source files axessibility.dtx and axessibility.lua,
+-- and the derived files
+--   axessibility.ins, axessibility.sty, axessibility.pdf, README,
+--   axessibilityExampleSingleLineT.tex, axessibilityExampleSingleLineA.tex,
+--.  axessibilityExampleAlignT.tex, axessibilityExampleAlignA.tex
+-- 
+-- This work may be distributed and/or modified under the
+-- conditions of the LaTeX Project Public License, either version 1.3
+-- of this license or (at your option) any later version.
+-- The latest version of this license is in
+--   http://www.latex-project.org/lppl.txt
+-- and version 1.3 or later is part of all distributions of LaTeX
+-- version 2005/12/01 or later.
+--
+-- This work has the LPPL maintenance status `maintained'.
+-- 
+-- The Current Maintainer of this work is 
+--               Sandro Coriasco
+--
+
 
 local open_dls = false
 local open_double_dls = false
--- we use this function to switch on or switch off automatic replacement of $$ and $ 
--- a - the flag (true/false) specifying if the package should do the replacements 
+
+--[[ The function replace_dls_and_double_dls() switches on or off automatic replacement of $$ and $. 
+     The boolean argument a (true/false) specifies if the package should do the replacements.
+  ]]
+
 function replace_dls_and_double_dls(a) 
 	if a and not luatexbase.in_callback("process_input_buffer", "process_input_buffer") then
 		luatexbase.add_to_callback("process_input_buffer", replace_chars_callback, "process_input_buffer")
@@ -65,4 +92,45 @@ function replace_chars_callback(a)
 		end]]
 		return a
 	end
+end
+
+-- The function generating the detokenized latex code to be passed to the shell command invoking the conversion app
+function to_mathml_formula(a)
+	local start
+	if eqn_type_selector ~= "m" then
+		return string.format("%q", a)
+	else
+		start=string.find(a,"m@ne")
+		if start then
+			return string.format("%q", string.sub(a,start+4)) 
+		else
+			start = string.find(a,"st@rredtrue")
+			if start then 
+				return string.format("%q", string.sub(a,start+11))
+			else
+				start = string.find(a,"st@rredfalse")
+				if start then 
+					return string.format("%q", string.sub(a,start+12))
+				else
+				-- should not happen ...				
+					return string.format("%q", a)
+				end
+			end
+		end
+	end
+end 
+
+-- The function generating the name of the external file to store the mathml code of the converted formula
+function to_mathml_filename(formula_ctr, formula_type) 
+	local eqn_number=string.sub("00000" .. formula_ctr, -6)
+	local file_name=string.sub(status.filename, 1, string.find(status.filename, ".", -4)-1)
+	return file_name .. eqn_types_filename_ids[string.find(eqn_types, eqn_type_selector)] .. eqn_number .. ".xml"
+end
+
+--function of storing of each formula to file.
+function execute_mathml_formula(a,b)
+local ctr = string.find(eqn_types, eqn_type_selector)
+						os.execute("latexmlmath " ..to_mathml_formula(a) .."--pmml=" .. to_mathml_filename(eqn_ctrs[ctr], eqn_type_selector))
+                                                   eqn_ctrs[ctr] = eqn_ctrs[ctr] +1
+                                                   eqn_type_selector = "u"
 end

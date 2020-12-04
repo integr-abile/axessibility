@@ -1,11 +1,15 @@
+%Actual now,but can be changed because of using of development version of tagpdf package.
+\RequirePackage[patches]{pdfmanagement}
+\DeclareDocumentMetadata{pdfversion=2.0}
 \documentclass{article}
-\usepackage{axessibility}
+\usepackage[mathml]{axessibility}
 \title{\thanks{Sasha Kozlovskiy} test document}
 \author{AlexanderKozlovskiy}
 \date{\today}
 \pagestyle{empty}
 \begin{document}
 \maketitle{}
+\tableofcontents
 \doreplacement{true}
 \section{Fermat's Last theorem}
 
@@ -18,7 +22,6 @@ x^n+y^n=z^n
 \item First element
 \item second element
 \item \[x+y=x*y\]
-
 This is test formula inside a list
 \item new test
 \(x+y=x-y\)
@@ -40,7 +43,30 @@ New froots sublist
 \item Russia
 \end{itemize}
 
-Test correct tagging of paragraphs
+Test correct tagging of paragraphs after lists.
+\section{test of tables}
+\begin{tabular}{cc}
+a&b\\
+c&d
+\end{tabular}
+new tabular
+\begin{table}
+\caption{test of tabular}
+\begin{tabular}{cc}
+\(1+1=2\)&\(1-1=0\)\\
+sum&difference
+\begin{tabular}{ccc}
+1&2&3\\
+4&5&6\\
+7&8&9
+\end{tabular}
+\\
+\((a+b)^2=a^2+2*a*b-b^2\)&\((a+b)*(a-b)^2=a^2-b^2\)\\
+1&2
+\end{tabular}
+\end{table}
+
+new paragraph
 
 end of test
 \end{document}
