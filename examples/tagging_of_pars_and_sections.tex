@@ -1,16 +1,73 @@
+%Actual now,but can be changed because of using of development version of tagpdf package.
+\RequirePackage[patches]{pdfmanagement}
+\DeclareDocumentMetadata{pdfversion=2.0}
+
 \documentclass{article}
-\usepackage{axessibility}
-\title{test document}
+\usepackage[mathml]{axessibility}
+\title{\thanks{Sasha Kozlovskiy} test document}
 \author{AlexanderKozlovskiy}
 \date{\today}
-%\maketitle
 \pagestyle{empty}
 \begin{document}
+\maketitle{}
+\tableofcontents
 \doreplacement{true}
 \section{Fermat's Last theorem}
-
 Fermat's last theorem theorem says that the equation 
 \[ 
 x^n+y^n=z^n 
 \] has no positive integer solutions provided that \( n\ge 3 \) It was proven only in 1993 by Andrew Wiles.
+\section{test of list}
+\begin{description}
+\item First element
+\item second element
+\item \[x+y=x*y\]
+
+This is test formula inside a list
+\item new test
+\(x+y=x-y\)
+\end{description}
+New list
+\begin{itemize}
+\item lemon
+\item \((a+b)*(a-b)=a^2-b^2\)
+\begin{enumerate}
+\item orange
+\item strawberry
+\end{enumerate}
+New froots sublist
+\begin{enumerate}
+\item apple
+\item pear
+\end{enumerate}
+\item \[\sin{x}^2+\cos{x}^2=1\]
+\item Russia
+\end{itemize}
+
+Test correct tagging of paragraphs after lists.
+\section{test of tables}
+\begin{tabular}{cc}
+a&b\\
+c&d
+\end{tabular}
+new tabular
+\begin{table}
+\caption{test of tabular}
+\begin{tabular}{cc}
+\(1+1=2\)&\(1-1=0\)\\
+sum&difference
+\begin{tabular}{ccc}
+1&2&3\\
+4&5&6\\
+7&8&9
+\end{tabular}
+\\
+\((a+b)^2=a^2+2*a*b-b^2\)&\((a+b)*(a-b)^2=a^2-b^2\)\\
+1&2
+\end{tabular}
+\end{table}
+
+new paragraph
+
+end of test
 \end{document}
