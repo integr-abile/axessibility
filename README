@@ -1,0 +1,49 @@
+%
+% Copyright (C) 2018, 2019, 2020 by 
+% Anna Capietto, Sandro Coriasco, Boris Doubrov, Alexander Koslovski,
+% Tiziana Armano, Nadir Murru, Dragan Ahmetovic, Cristian Bernareggi
+%
+% Based on accsupp and tagpdf
+%
+% This work consists of the main source files axessibility.dtx and axessibility.lua,
+% and the derived files
+%   axessibility.ins, axessibility.sty, axessibility.pdf, README,
+%   axessibilityExampleSingleLineT.tex, axessibilityExampleSingleLineA.tex,
+%.  axessibilityExampleAlignT.tex, axessibilityExampleAlignA.tex
+% 
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is 
+%               Sandro Coriasco
+%
+
+This is version 3.0 of axessibility, a package which allows LaTeX to create 
+pdf files with mathematical formulae accessible by assistive technologies 
+for visually impaired people and people with special educational needs.
+
+On GitHub, the following files are enclosed.
+
+  README                        - This file.
+  axessibility.sty                - The axessibility package.
+  axessibility.pdf                - The package documentation.
+  axessibility.lua                - Lua code module for the automatic replacement of $ and $$ Tex markers 
+                                           with their LaTeX equivalents, automatic tagging of paragraphs, and more.
+  axessibilityExampleSingleLineT   - A sample LaTeX file which uses the axessibility package,
+                                                        with inline and single line displayed formulae, employing 
+                                                        the tagpdf package option.
+  axessibilityExampleSingleLineA   - Same as above, employing the accsupp option.
+  axessibilityExampleAlignT   - A sample LaTeX file which uses the axessibility package,
+                                                    with inline and multiline displayed formulae,
+                                                    employing the tagpdf option.
+  axessibilityExampleAlignA   - Same as above, employing the accsupp option.
+
+Installation notes:
+Move `axessibility.sty`  and `axessibility.lua` to the correct folders of your local `texmf` directory
