@@ -32,18 +32,18 @@ for visually impaired people and people with special educational needs.
 On GitHub, the following files are enclosed.
 
   README                        - This file.
-  axessibility.sty                - The axessibility package.
-  axessibility.pdf                - The package documentation.
-  axessibility.lua                - Lua code module for the automatic replacement of $ and $$ Tex markers 
+  package/axessibility.sty                - The axessibility package.
+  package/axessibility.pdf                - The package documentation.
+  package/axessibility.lua                - Lua code module for the automatic replacement of $ and $$ Tex markers 
                                            with their LaTeX equivalents, automatic tagging of paragraphs, and more.
-  axessibilityExampleSingleLineT   - A sample LaTeX file which uses the axessibility package,
+  examples/axessibilityExampleSingleLineT   - A sample LaTeX file which uses the axessibility package,
                                                         with inline and single line displayed formulae, employing 
                                                         the tagpdf package option.
-  axessibilityExampleSingleLineA   - Same as above, employing the accsupp option.
-  axessibilityExampleAlignT   - A sample LaTeX file which uses the axessibility package,
+  examples/axessibilityExampleSingleLineA   - Same as above, employing the accsupp option.
+  examples/axessibilityExampleAlignT   - A sample LaTeX file which uses the axessibility package,
                                                     with inline and multiline displayed formulae,
                                                     employing the tagpdf option.
-  axessibilityExampleAlignA   - Same as above, employing the accsupp option.
+  examples/axessibilityExampleAlignA   - Same as above, employing the accsupp option.
 
 Installation notes:
 Move `axessibility.sty`  and `axessibility.lua` to the correct folders of your local `texmf` directory
