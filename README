@@ -5,9 +5,9 @@
 %
 % Based on accsupp and tagpdf
 %
-% This work consists of the main source files axessibility.dtx and axessibility.lua,
+% This work consists of the main source files and axessibility.lua,
 % and the derived files
-%   axessibility.ins, axessibility.sty, axessibility.pdf, README,
+%   axessibility.sty, axessibility.pdf, README,
 %   axessibilityExampleSingleLineT.tex, axessibilityExampleSingleLineA.tex,
 %.  axessibilityExampleAlignT.tex, axessibilityExampleAlignA.tex
 % 
